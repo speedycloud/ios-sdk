@@ -1,0 +1,873 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0146C85E205A5A4300C6AEC1 /* spSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0146C85D205A5A4300C6AEC1 /* spSessionManager.m */; };
+		015577B220A465E600860A4F /* UIViewController+CBPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 015577B120A465E600860A4F /* UIViewController+CBPopup.m */; };
+		0156C5462054588A00659230 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0156C5452054588A00659230 /* AppDelegate.m */; };
+		0156C5492054588A00659230 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0156C5482054588A00659230 /* ViewController.m */; };
+		0156C54C2054588A00659230 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0156C54A2054588A00659230 /* Main.storyboard */; };
+		0156C54E2054588A00659230 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0156C54D2054588A00659230 /* Assets.xcassets */; };
+		0156C5512054588A00659230 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0156C54F2054588A00659230 /* LaunchScreen.storyboard */; };
+		0156C5542054588A00659230 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0156C5532054588A00659230 /* main.m */; };
+		0156C55E2054588A00659230 /* spObjDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0156C55D2054588A00659230 /* spObjDemoTests.m */; };
+		0156C5692054588A00659230 /* spObjDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0156C5682054588A00659230 /* spObjDemoUITests.m */; };
+		0156C58620545F5A00659230 /* iosBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 0156C58520545F5A00659230 /* iosBack.png */; };
+		015A4D22205F6EA300188D5D /* spAsyncRun.m in Sources */ = {isa = PBXBuildFile; fileRef = 015A4D21205F6EA300188D5D /* spAsyncRun.m */; };
+		015A4D26205FA27100188D5D /* spFormUpload.m in Sources */ = {isa = PBXBuildFile; fileRef = 015A4D25205FA27100188D5D /* spFormUpload.m */; };
+		015B621E2071DFB3002AC63B /* spUpLoadOption.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 015F686E205BC353000A0FE5 /* spUpLoadOption.h */; };
+		015B621F2071E0F3002AC63B /* spConfigure.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 017AF7C7205929EB001A946B /* spConfigure.h */; };
+		015B62202071E156002AC63B /* spDownloadSessionManager.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 018D300A206B8379001E8212 /* spDownloadSessionManager.h */; };
+		015B62212071E156002AC63B /* spDownloadUtility.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 018D300C206B8379001E8212 /* spDownloadUtility.h */; };
+		015B62222071E156002AC63B /* spFileDelegate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 018AE6B22060F71C0089CA20 /* spFileDelegate.h */; };
+		015B62232071E156002AC63B /* spFile.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 018AE6AF2060F6D30089CA20 /* spFile.h */; };
+		015B62242071E16B002AC63B /* spFormUpload.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 015A4D24205FA27100188D5D /* spFormUpload.h */; };
+		015B62252071E19B002AC63B /* spFileRecorder.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 01DCD8A12068F08E008F7188 /* spFileRecorder.h */; };
+		015B62262071E1B9002AC63B /* spAsyncRun.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 015A4D20205F6EA300188D5D /* spAsyncRun.h */; };
+		015B62272071E1C6002AC63B /* spResumeUpload.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 018AE6AD2060F1E30089CA20 /* spResumeUpload.h */; };
+		015B62282071E1E1002AC63B /* spResponseInfo.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 017AF7B52058D185001A946B /* spResponseInfo.h */; };
+		015B62292071E1F0002AC63B /* spSessionManager.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0146C85C205A5A4300C6AEC1 /* spSessionManager.h */; };
+		015B622A2071E1FF002AC63B /* spHttpDelegate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0146C85F205A5C2F00C6AEC1 /* spHttpDelegate.h */; };
+		015B622B2071E20D002AC63B /* spHeaderSignOrToken.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 018AE6A92060ECEA0089CA20 /* spHeaderSignOrToken.h */; };
+		015B622C2071E225002AC63B /* spRecorderDelegate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 01FA25E52060FB8A0032BF04 /* spRecorderDelegate.h */; };
+		015B622D2071E243002AC63B /* NSURLSession+spCorrectedResumeData.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 018D300B206B8379001E8212 /* NSURLSession+spCorrectedResumeData.h */; };
+		015B622E2071E243002AC63B /* spDownLoadDataManager.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 018D300F206B8379001E8212 /* spDownLoadDataManager.h */; };
+		015B622F2071E243002AC63B /* spDownloadDelegate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 018D300E206B8379001E8212 /* spDownloadDelegate.h */; };
+		015B62302071E243002AC63B /* spDownLoadModel.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 018D3013206B8379001E8212 /* spDownLoadModel.h */; };
+		015B62312071E243002AC63B /* spUrlSafeBase64.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 01DCD8A42068F9AC008F7188 /* spUrlSafeBase64.h */; };
+		015B62322071E243002AC63B /* spGTMBase64.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 01DCD8A72068F9D2008F7188 /* spGTMBase64.h */; };
+		015F6870205BC353000A0FE5 /* spUpLoadOption.m in Sources */ = {isa = PBXBuildFile; fileRef = 015F686F205BC353000A0FE5 /* spUpLoadOption.m */; };
+		017AF7902058C379001A946B /* spObjSDK.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 017AF78F2058C0D2001A946B /* spObjSDK.h */; };
+		017AF7B72058D185001A946B /* spResponseInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 017AF7B62058D185001A946B /* spResponseInfo.m */; };
+		017AF7C9205929EB001A946B /* spConfigure.m in Sources */ = {isa = PBXBuildFile; fileRef = 017AF7C8205929EB001A946B /* spConfigure.m */; };
+		018AE6AB2060ECEA0089CA20 /* spHeaderSignOrToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 018AE6AA2060ECEA0089CA20 /* spHeaderSignOrToken.m */; };
+		018AE6AE2060F1E40089CA20 /* spResumeUpload.m in Sources */ = {isa = PBXBuildFile; fileRef = 018AE6AC2060F1E30089CA20 /* spResumeUpload.m */; };
+		018AE6B12060F6D30089CA20 /* spFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 018AE6B02060F6D30089CA20 /* spFile.m */; };
+		018D3014206B837A001E8212 /* spDownLoadDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 018D3009206B8379001E8212 /* spDownLoadDataManager.m */; };
+		018D3015206B837A001E8212 /* spDownloadSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 018D300D206B8379001E8212 /* spDownloadSessionManager.m */; };
+		018D3016206B837A001E8212 /* NSURLSession+spCorrectedResumeData.m in Sources */ = {isa = PBXBuildFile; fileRef = 018D3010206B8379001E8212 /* NSURLSession+spCorrectedResumeData.m */; };
+		018D3017206B837A001E8212 /* spDownloadUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 018D3011206B8379001E8212 /* spDownloadUtility.m */; };
+		018D3018206B837A001E8212 /* spDownLoadModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 018D3012206B8379001E8212 /* spDownLoadModel.m */; };
+		01951D1020565D81008219CB /* spObjUpLoadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 01951D0F20565D81008219CB /* spObjUpLoadManager.m */; };
+		01951D1120565D81008219CB /* spObjUpLoadManager.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 01951D0E20565D81008219CB /* spObjUpLoadManager.h */; };
+		01DCD8A32068F08E008F7188 /* spFileRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 01DCD8A22068F08E008F7188 /* spFileRecorder.m */; };
+		01DCD8A62068F9AC008F7188 /* spUrlSafeBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 01DCD8A52068F9AC008F7188 /* spUrlSafeBase64.m */; };
+		01DCD8A92068F9D2008F7188 /* spGTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 01DCD8A82068F9D2008F7188 /* spGTMBase64.m */; };
+		01FA25F220612A800032BF04 /* libspObjSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 01951D0C20565D81008219CB /* libspObjSDK.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0156C55A2054588A00659230 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0156C5392054588A00659230 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0156C5402054588A00659230;
+			remoteInfo = spObjDemo;
+		};
+		0156C5652054588A00659230 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0156C5392054588A00659230 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0156C5402054588A00659230;
+			remoteInfo = spObjDemo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		017AF7AD2058C437001A946B /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		01951D0A20565D81008219CB /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+				015B622D2071E243002AC63B /* NSURLSession+spCorrectedResumeData.h in CopyFiles */,
+				015B622E2071E243002AC63B /* spDownLoadDataManager.h in CopyFiles */,
+				015B622F2071E243002AC63B /* spDownloadDelegate.h in CopyFiles */,
+				015B62302071E243002AC63B /* spDownLoadModel.h in CopyFiles */,
+				015B62312071E243002AC63B /* spUrlSafeBase64.h in CopyFiles */,
+				015B62322071E243002AC63B /* spGTMBase64.h in CopyFiles */,
+				015B622C2071E225002AC63B /* spRecorderDelegate.h in CopyFiles */,
+				015B622B2071E20D002AC63B /* spHeaderSignOrToken.h in CopyFiles */,
+				015B622A2071E1FF002AC63B /* spHttpDelegate.h in CopyFiles */,
+				015B62292071E1F0002AC63B /* spSessionManager.h in CopyFiles */,
+				015B62282071E1E1002AC63B /* spResponseInfo.h in CopyFiles */,
+				015B62272071E1C6002AC63B /* spResumeUpload.h in CopyFiles */,
+				015B62262071E1B9002AC63B /* spAsyncRun.h in CopyFiles */,
+				015B62252071E19B002AC63B /* spFileRecorder.h in CopyFiles */,
+				015B62242071E16B002AC63B /* spFormUpload.h in CopyFiles */,
+				015B62202071E156002AC63B /* spDownloadSessionManager.h in CopyFiles */,
+				015B62212071E156002AC63B /* spDownloadUtility.h in CopyFiles */,
+				015B62222071E156002AC63B /* spFileDelegate.h in CopyFiles */,
+				015B62232071E156002AC63B /* spFile.h in CopyFiles */,
+				015B621F2071E0F3002AC63B /* spConfigure.h in CopyFiles */,
+				015B621E2071DFB3002AC63B /* spUpLoadOption.h in CopyFiles */,
+				017AF7902058C379001A946B /* spObjSDK.h in CopyFiles */,
+				01951D1120565D81008219CB /* spObjUpLoadManager.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		0146C85C205A5A4300C6AEC1 /* spSessionManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = spSessionManager.h; sourceTree = "<group>"; };
+		0146C85D205A5A4300C6AEC1 /* spSessionManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = spSessionManager.m; sourceTree = "<group>"; };
+		0146C85F205A5C2F00C6AEC1 /* spHttpDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = spHttpDelegate.h; sourceTree = "<group>"; };
+		015577B020A465E500860A4F /* UIViewController+CBPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+CBPopup.h"; sourceTree = "<group>"; };
+		015577B120A465E600860A4F /* UIViewController+CBPopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+CBPopup.m"; sourceTree = "<group>"; };
+		0156C5412054588A00659230 /* spObjDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = spObjDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0156C5442054588A00659230 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		0156C5452054588A00659230 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		0156C5472054588A00659230 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		0156C5482054588A00659230 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		0156C54B2054588A00659230 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		0156C54D2054588A00659230 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0156C5502054588A00659230 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		0156C5522054588A00659230 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0156C5532054588A00659230 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		0156C5592054588A00659230 /* spObjDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = spObjDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0156C55D2054588A00659230 /* spObjDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = spObjDemoTests.m; sourceTree = "<group>"; };
+		0156C55F2054588A00659230 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0156C5642054588A00659230 /* spObjDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = spObjDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0156C5682054588A00659230 /* spObjDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = spObjDemoUITests.m; sourceTree = "<group>"; };
+		0156C56A2054588A00659230 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0156C58520545F5A00659230 /* iosBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iosBack.png; sourceTree = "<group>"; };
+		015A4D20205F6EA300188D5D /* spAsyncRun.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = spAsyncRun.h; sourceTree = "<group>"; };
+		015A4D21205F6EA300188D5D /* spAsyncRun.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = spAsyncRun.m; sourceTree = "<group>"; };
+		015A4D24205FA27100188D5D /* spFormUpload.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = spFormUpload.h; sourceTree = "<group>"; };
+		015A4D25205FA27100188D5D /* spFormUpload.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = spFormUpload.m; sourceTree = "<group>"; };
+		015F686E205BC353000A0FE5 /* spUpLoadOption.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = spUpLoadOption.h; sourceTree = "<group>"; };
+		015F686F205BC353000A0FE5 /* spUpLoadOption.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = spUpLoadOption.m; sourceTree = "<group>"; };
+		017AF78F2058C0D2001A946B /* spObjSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = spObjSDK.h; sourceTree = "<group>"; };
+		017AF7B52058D185001A946B /* spResponseInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = spResponseInfo.h; sourceTree = "<group>"; };
+		017AF7B62058D185001A946B /* spResponseInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = spResponseInfo.m; sourceTree = "<group>"; };
+		017AF7C7205929EB001A946B /* spConfigure.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = spConfigure.h; sourceTree = "<group>"; };
+		017AF7C8205929EB001A946B /* spConfigure.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = spConfigure.m; sourceTree = "<group>"; };
+		018AE6A92060ECEA0089CA20 /* spHeaderSignOrToken.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = spHeaderSignOrToken.h; sourceTree = "<group>"; };
+		018AE6AA2060ECEA0089CA20 /* spHeaderSignOrToken.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = spHeaderSignOrToken.m; sourceTree = "<group>"; };
+		018AE6AC2060F1E30089CA20 /* spResumeUpload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = spResumeUpload.m; sourceTree = "<group>"; };
+		018AE6AD2060F1E30089CA20 /* spResumeUpload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = spResumeUpload.h; sourceTree = "<group>"; };
+		018AE6AF2060F6D30089CA20 /* spFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = spFile.h; sourceTree = "<group>"; };
+		018AE6B02060F6D30089CA20 /* spFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = spFile.m; sourceTree = "<group>"; };
+		018AE6B22060F71C0089CA20 /* spFileDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = spFileDelegate.h; sourceTree = "<group>"; };
+		018D3009206B8379001E8212 /* spDownLoadDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = spDownLoadDataManager.m; sourceTree = "<group>"; };
+		018D300A206B8379001E8212 /* spDownloadSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = spDownloadSessionManager.h; sourceTree = "<group>"; };
+		018D300B206B8379001E8212 /* NSURLSession+spCorrectedResumeData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLSession+spCorrectedResumeData.h"; sourceTree = "<group>"; };
+		018D300C206B8379001E8212 /* spDownloadUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = spDownloadUtility.h; sourceTree = "<group>"; };
+		018D300D206B8379001E8212 /* spDownloadSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = spDownloadSessionManager.m; sourceTree = "<group>"; };
+		018D300E206B8379001E8212 /* spDownloadDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = spDownloadDelegate.h; sourceTree = "<group>"; };
+		018D300F206B8379001E8212 /* spDownLoadDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = spDownLoadDataManager.h; sourceTree = "<group>"; };
+		018D3010206B8379001E8212 /* NSURLSession+spCorrectedResumeData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLSession+spCorrectedResumeData.m"; sourceTree = "<group>"; };
+		018D3011206B8379001E8212 /* spDownloadUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = spDownloadUtility.m; sourceTree = "<group>"; };
+		018D3012206B8379001E8212 /* spDownLoadModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = spDownLoadModel.m; sourceTree = "<group>"; };
+		018D3013206B8379001E8212 /* spDownLoadModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = spDownLoadModel.h; sourceTree = "<group>"; };
+		01951D0C20565D81008219CB /* libspObjSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libspObjSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		01951D0E20565D81008219CB /* spObjUpLoadManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = spObjUpLoadManager.h; sourceTree = "<group>"; };
+		01951D0F20565D81008219CB /* spObjUpLoadManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = spObjUpLoadManager.m; sourceTree = "<group>"; };
+		01DCD8A12068F08E008F7188 /* spFileRecorder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = spFileRecorder.h; sourceTree = "<group>"; };
+		01DCD8A22068F08E008F7188 /* spFileRecorder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = spFileRecorder.m; sourceTree = "<group>"; };
+		01DCD8A42068F9AC008F7188 /* spUrlSafeBase64.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = spUrlSafeBase64.h; sourceTree = "<group>"; };
+		01DCD8A52068F9AC008F7188 /* spUrlSafeBase64.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = spUrlSafeBase64.m; sourceTree = "<group>"; };
+		01DCD8A72068F9D2008F7188 /* spGTMBase64.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = spGTMBase64.h; sourceTree = "<group>"; };
+		01DCD8A82068F9D2008F7188 /* spGTMBase64.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = spGTMBase64.m; sourceTree = "<group>"; };
+		01FA25E52060FB8A0032BF04 /* spRecorderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = spRecorderDelegate.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0156C53E2054588A00659230 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01FA25F220612A800032BF04 /* libspObjSDK.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0156C5562054588A00659230 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0156C5612054588A00659230 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		01951D0920565D81008219CB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0146C85B205A098C00C6AEC1 /* Http */ = {
+			isa = PBXGroup;
+			children = (
+				017AF7B52058D185001A946B /* spResponseInfo.h */,
+				017AF7B62058D185001A946B /* spResponseInfo.m */,
+				0146C85C205A5A4300C6AEC1 /* spSessionManager.h */,
+				0146C85D205A5A4300C6AEC1 /* spSessionManager.m */,
+				0146C85F205A5C2F00C6AEC1 /* spHttpDelegate.h */,
+				015F686E205BC353000A0FE5 /* spUpLoadOption.h */,
+				015F686F205BC353000A0FE5 /* spUpLoadOption.m */,
+				018AE6A92060ECEA0089CA20 /* spHeaderSignOrToken.h */,
+				018AE6AA2060ECEA0089CA20 /* spHeaderSignOrToken.m */,
+			);
+			path = Http;
+			sourceTree = "<group>";
+		};
+		0156C5382054588A00659230 = {
+			isa = PBXGroup;
+			children = (
+				0156C5432054588A00659230 /* spObjDemo */,
+				0156C55C2054588A00659230 /* spObjDemoTests */,
+				0156C5672054588A00659230 /* spObjDemoUITests */,
+				01951D0D20565D81008219CB /* spObjSDK */,
+				0156C5422054588A00659230 /* Products */,
+				0156C5832054593600659230 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		0156C5422054588A00659230 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0156C5412054588A00659230 /* spObjDemo.app */,
+				0156C5592054588A00659230 /* spObjDemoTests.xctest */,
+				0156C5642054588A00659230 /* spObjDemoUITests.xctest */,
+				01951D0C20565D81008219CB /* libspObjSDK.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0156C5432054588A00659230 /* spObjDemo */ = {
+			isa = PBXGroup;
+			children = (
+				015577B020A465E500860A4F /* UIViewController+CBPopup.h */,
+				015577B120A465E600860A4F /* UIViewController+CBPopup.m */,
+				0156C58520545F5A00659230 /* iosBack.png */,
+				0156C5442054588A00659230 /* AppDelegate.h */,
+				0156C5452054588A00659230 /* AppDelegate.m */,
+				0156C5472054588A00659230 /* ViewController.h */,
+				0156C5482054588A00659230 /* ViewController.m */,
+				0156C54A2054588A00659230 /* Main.storyboard */,
+				0156C54D2054588A00659230 /* Assets.xcassets */,
+				0156C54F2054588A00659230 /* LaunchScreen.storyboard */,
+				0156C5522054588A00659230 /* Info.plist */,
+				0156C5532054588A00659230 /* main.m */,
+			);
+			path = spObjDemo;
+			sourceTree = "<group>";
+		};
+		0156C55C2054588A00659230 /* spObjDemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				0156C55D2054588A00659230 /* spObjDemoTests.m */,
+				0156C55F2054588A00659230 /* Info.plist */,
+			);
+			path = spObjDemoTests;
+			sourceTree = "<group>";
+		};
+		0156C5672054588A00659230 /* spObjDemoUITests */ = {
+			isa = PBXGroup;
+			children = (
+				0156C5682054588A00659230 /* spObjDemoUITests.m */,
+				0156C56A2054588A00659230 /* Info.plist */,
+			);
+			path = spObjDemoUITests;
+			sourceTree = "<group>";
+		};
+		0156C5832054593600659230 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		015A4D1F205F6E6000188D5D /* common */ = {
+			isa = PBXGroup;
+			children = (
+				018AE6B22060F71C0089CA20 /* spFileDelegate.h */,
+				018AE6AF2060F6D30089CA20 /* spFile.h */,
+				018AE6B02060F6D30089CA20 /* spFile.m */,
+				015A4D20205F6EA300188D5D /* spAsyncRun.h */,
+				015A4D21205F6EA300188D5D /* spAsyncRun.m */,
+				01DCD8A42068F9AC008F7188 /* spUrlSafeBase64.h */,
+				01DCD8A52068F9AC008F7188 /* spUrlSafeBase64.m */,
+				01DCD8A72068F9D2008F7188 /* spGTMBase64.h */,
+				01DCD8A82068F9D2008F7188 /* spGTMBase64.m */,
+			);
+			path = common;
+			sourceTree = "<group>";
+		};
+		018D3008206B832D001E8212 /* Download */ = {
+			isa = PBXGroup;
+			children = (
+				018D300B206B8379001E8212 /* NSURLSession+spCorrectedResumeData.h */,
+				018D3010206B8379001E8212 /* NSURLSession+spCorrectedResumeData.m */,
+				018D300F206B8379001E8212 /* spDownLoadDataManager.h */,
+				018D3009206B8379001E8212 /* spDownLoadDataManager.m */,
+				018D300E206B8379001E8212 /* spDownloadDelegate.h */,
+				018D3013206B8379001E8212 /* spDownLoadModel.h */,
+				018D3012206B8379001E8212 /* spDownLoadModel.m */,
+				018D300A206B8379001E8212 /* spDownloadSessionManager.h */,
+				018D300D206B8379001E8212 /* spDownloadSessionManager.m */,
+				018D300C206B8379001E8212 /* spDownloadUtility.h */,
+				018D3011206B8379001E8212 /* spDownloadUtility.m */,
+			);
+			path = Download;
+			sourceTree = "<group>";
+		};
+		01951D0D20565D81008219CB /* spObjSDK */ = {
+			isa = PBXGroup;
+			children = (
+				018D3008206B832D001E8212 /* Download */,
+				015A4D1F205F6E6000188D5D /* common */,
+				0146C85B205A098C00C6AEC1 /* Http */,
+				01951D0E20565D81008219CB /* spObjUpLoadManager.h */,
+				01951D0F20565D81008219CB /* spObjUpLoadManager.m */,
+				017AF78F2058C0D2001A946B /* spObjSDK.h */,
+				017AF7C7205929EB001A946B /* spConfigure.h */,
+				017AF7C8205929EB001A946B /* spConfigure.m */,
+				015A4D24205FA27100188D5D /* spFormUpload.h */,
+				015A4D25205FA27100188D5D /* spFormUpload.m */,
+				01DCD8A12068F08E008F7188 /* spFileRecorder.h */,
+				01DCD8A22068F08E008F7188 /* spFileRecorder.m */,
+				01FA25E52060FB8A0032BF04 /* spRecorderDelegate.h */,
+				018AE6AD2060F1E30089CA20 /* spResumeUpload.h */,
+				018AE6AC2060F1E30089CA20 /* spResumeUpload.m */,
+			);
+			path = spObjSDK;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0156C5402054588A00659230 /* spObjDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0156C56D2054588A00659230 /* Build configuration list for PBXNativeTarget "spObjDemo" */;
+			buildPhases = (
+				0156C53D2054588A00659230 /* Sources */,
+				0156C53E2054588A00659230 /* Frameworks */,
+				0156C53F2054588A00659230 /* Resources */,
+				017AF7AD2058C437001A946B /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = spObjDemo;
+			productName = spObjDemo;
+			productReference = 0156C5412054588A00659230 /* spObjDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		0156C5582054588A00659230 /* spObjDemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0156C5702054588A00659230 /* Build configuration list for PBXNativeTarget "spObjDemoTests" */;
+			buildPhases = (
+				0156C5552054588A00659230 /* Sources */,
+				0156C5562054588A00659230 /* Frameworks */,
+				0156C5572054588A00659230 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0156C55B2054588A00659230 /* PBXTargetDependency */,
+			);
+			name = spObjDemoTests;
+			productName = spObjDemoTests;
+			productReference = 0156C5592054588A00659230 /* spObjDemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		0156C5632054588A00659230 /* spObjDemoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0156C5732054588A00659230 /* Build configuration list for PBXNativeTarget "spObjDemoUITests" */;
+			buildPhases = (
+				0156C5602054588A00659230 /* Sources */,
+				0156C5612054588A00659230 /* Frameworks */,
+				0156C5622054588A00659230 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0156C5662054588A00659230 /* PBXTargetDependency */,
+			);
+			name = spObjDemoUITests;
+			productName = spObjDemoUITests;
+			productReference = 0156C5642054588A00659230 /* spObjDemoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		01951D0B20565D81008219CB /* spObjSDK */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 01951D1220565D81008219CB /* Build configuration list for PBXNativeTarget "spObjSDK" */;
+			buildPhases = (
+				01951D0820565D81008219CB /* Sources */,
+				01951D0920565D81008219CB /* Frameworks */,
+				01951D0A20565D81008219CB /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = spObjSDK;
+			productName = spObjUpLoadSDK;
+			productReference = 01951D0C20565D81008219CB /* libspObjSDK.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0156C5392054588A00659230 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = YanBo;
+				TargetAttributes = {
+					0156C5402054588A00659230 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					0156C5582054588A00659230 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 0156C5402054588A00659230;
+					};
+					0156C5632054588A00659230 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 0156C5402054588A00659230;
+					};
+					01951D0B20565D81008219CB = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 0156C53C2054588A00659230 /* Build configuration list for PBXProject "spObjDemo" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 0156C5382054588A00659230;
+			productRefGroup = 0156C5422054588A00659230 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0156C5402054588A00659230 /* spObjDemo */,
+				0156C5582054588A00659230 /* spObjDemoTests */,
+				0156C5632054588A00659230 /* spObjDemoUITests */,
+				01951D0B20565D81008219CB /* spObjSDK */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0156C53F2054588A00659230 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0156C5512054588A00659230 /* LaunchScreen.storyboard in Resources */,
+				0156C54E2054588A00659230 /* Assets.xcassets in Resources */,
+				0156C58620545F5A00659230 /* iosBack.png in Resources */,
+				0156C54C2054588A00659230 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0156C5572054588A00659230 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0156C5622054588A00659230 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0156C53D2054588A00659230 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0156C5492054588A00659230 /* ViewController.m in Sources */,
+				0156C5542054588A00659230 /* main.m in Sources */,
+				015577B220A465E600860A4F /* UIViewController+CBPopup.m in Sources */,
+				0156C5462054588A00659230 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0156C5552054588A00659230 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0156C55E2054588A00659230 /* spObjDemoTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0156C5602054588A00659230 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0156C5692054588A00659230 /* spObjDemoUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		01951D0820565D81008219CB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01951D1020565D81008219CB /* spObjUpLoadManager.m in Sources */,
+				015A4D22205F6EA300188D5D /* spAsyncRun.m in Sources */,
+				017AF7B72058D185001A946B /* spResponseInfo.m in Sources */,
+				017AF7C9205929EB001A946B /* spConfigure.m in Sources */,
+				01DCD8A32068F08E008F7188 /* spFileRecorder.m in Sources */,
+				018D3018206B837A001E8212 /* spDownLoadModel.m in Sources */,
+				0146C85E205A5A4300C6AEC1 /* spSessionManager.m in Sources */,
+				01DCD8A62068F9AC008F7188 /* spUrlSafeBase64.m in Sources */,
+				015A4D26205FA27100188D5D /* spFormUpload.m in Sources */,
+				018D3015206B837A001E8212 /* spDownloadSessionManager.m in Sources */,
+				018AE6B12060F6D30089CA20 /* spFile.m in Sources */,
+				01DCD8A92068F9D2008F7188 /* spGTMBase64.m in Sources */,
+				015F6870205BC353000A0FE5 /* spUpLoadOption.m in Sources */,
+				018AE6AB2060ECEA0089CA20 /* spHeaderSignOrToken.m in Sources */,
+				018AE6AE2060F1E40089CA20 /* spResumeUpload.m in Sources */,
+				018D3017206B837A001E8212 /* spDownloadUtility.m in Sources */,
+				018D3016206B837A001E8212 /* NSURLSession+spCorrectedResumeData.m in Sources */,
+				018D3014206B837A001E8212 /* spDownLoadDataManager.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0156C55B2054588A00659230 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0156C5402054588A00659230 /* spObjDemo */;
+			targetProxy = 0156C55A2054588A00659230 /* PBXContainerItemProxy */;
+		};
+		0156C5662054588A00659230 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0156C5402054588A00659230 /* spObjDemo */;
+			targetProxy = 0156C5652054588A00659230 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		0156C54A2054588A00659230 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0156C54B2054588A00659230 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		0156C54F2054588A00659230 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0156C5502054588A00659230 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		0156C56B2054588A00659230 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		0156C56C2054588A00659230 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		0156C56E2054588A00659230 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FY72UAG3T4;
+				INFOPLIST_FILE = spObjDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Speedy.spObjDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0156C56F2054588A00659230 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FY72UAG3T4;
+				INFOPLIST_FILE = spObjDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Speedy.spObjDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		0156C5712054588A00659230 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FY72UAG3T4;
+				INFOPLIST_FILE = spObjDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Speedy.spObjDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/spObjDemo.app/spObjDemo";
+			};
+			name = Debug;
+		};
+		0156C5722054588A00659230 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FY72UAG3T4;
+				INFOPLIST_FILE = spObjDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Speedy.spObjDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/spObjDemo.app/spObjDemo";
+			};
+			name = Release;
+		};
+		0156C5742054588A00659230 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FY72UAG3T4;
+				INFOPLIST_FILE = spObjDemoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Speedy.spObjDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = spObjDemo;
+			};
+			name = Debug;
+		};
+		0156C5752054588A00659230 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FY72UAG3T4;
+				INFOPLIST_FILE = spObjDemoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Speedy.spObjDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = spObjDemo;
+			};
+			name = Release;
+		};
+		01951D1320565D81008219CB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FY72UAG3T4;
+				ENABLE_BITCODE = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		01951D1420565D81008219CB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FY72UAG3T4;
+				ENABLE_BITCODE = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0156C53C2054588A00659230 /* Build configuration list for PBXProject "spObjDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0156C56B2054588A00659230 /* Debug */,
+				0156C56C2054588A00659230 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0156C56D2054588A00659230 /* Build configuration list for PBXNativeTarget "spObjDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0156C56E2054588A00659230 /* Debug */,
+				0156C56F2054588A00659230 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0156C5702054588A00659230 /* Build configuration list for PBXNativeTarget "spObjDemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0156C5712054588A00659230 /* Debug */,
+				0156C5722054588A00659230 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0156C5732054588A00659230 /* Build configuration list for PBXNativeTarget "spObjDemoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0156C5742054588A00659230 /* Debug */,
+				0156C5752054588A00659230 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		01951D1220565D81008219CB /* Build configuration list for PBXNativeTarget "spObjSDK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				01951D1320565D81008219CB /* Debug */,
+				01951D1420565D81008219CB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0156C5392054588A00659230 /* Project object */;
+}
