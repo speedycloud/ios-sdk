@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0136E3E1216DFE6600143B51 /* GenerateExternalUrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 0136E3E0216DFE6600143B51 /* GenerateExternalUrl.m */; };
 		0146C85E205A5A4300C6AEC1 /* spSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0146C85D205A5A4300C6AEC1 /* spSessionManager.m */; };
 		015577B220A465E600860A4F /* UIViewController+CBPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 015577B120A465E600860A4F /* UIViewController+CBPopup.m */; };
 		0156C5462054588A00659230 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0156C5452054588A00659230 /* AppDelegate.m */; };
@@ -124,6 +125,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0136E3DF216DFE6600143B51 /* GenerateExternalUrl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GenerateExternalUrl.h; sourceTree = "<group>"; };
+		0136E3E0216DFE6600143B51 /* GenerateExternalUrl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GenerateExternalUrl.m; sourceTree = "<group>"; };
 		0146C85C205A5A4300C6AEC1 /* spSessionManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = spSessionManager.h; sourceTree = "<group>"; };
 		0146C85D205A5A4300C6AEC1 /* spSessionManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = spSessionManager.m; sourceTree = "<group>"; };
 		0146C85F205A5C2F00C6AEC1 /* spHttpDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = spHttpDelegate.h; sourceTree = "<group>"; };
@@ -355,6 +358,8 @@
 				01FA25E52060FB8A0032BF04 /* spRecorderDelegate.h */,
 				018AE6AD2060F1E30089CA20 /* spResumeUpload.h */,
 				018AE6AC2060F1E30089CA20 /* spResumeUpload.m */,
+				0136E3DF216DFE6600143B51 /* GenerateExternalUrl.h */,
+				0136E3E0216DFE6600143B51 /* GenerateExternalUrl.m */,
 			);
 			path = spObjSDK;
 			sourceTree = "<group>";
@@ -545,6 +550,7 @@
 			files = (
 				01951D1020565D81008219CB /* spObjUpLoadManager.m in Sources */,
 				015A4D22205F6EA300188D5D /* spAsyncRun.m in Sources */,
+				0136E3E1216DFE6600143B51 /* GenerateExternalUrl.m in Sources */,
 				017AF7B72058D185001A946B /* spResponseInfo.m in Sources */,
 				017AF7C9205929EB001A946B /* spConfigure.m in Sources */,
 				01DCD8A32068F08E008F7188 /* spFileRecorder.m in Sources */,
@@ -712,6 +718,10 @@
 				INFOPLIST_FILE = spObjDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.Speedy.spObjDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -727,6 +737,10 @@
 				INFOPLIST_FILE = spObjDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.Speedy.spObjDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";

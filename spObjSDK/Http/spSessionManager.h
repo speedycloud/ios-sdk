@@ -6,6 +6,7 @@
 //  Copyright © 2018年 YanBo. All rights reserved.
 //
 #import "spHttpDelegate.h"
+#import "spHeaderSignOrToken.h"
 #import <Foundation/Foundation.h>
 
 @interface spSessionManager : NSObject <spHttpDelegate>
@@ -41,5 +42,7 @@ withData:(NSData *)data
 withParams:(NSDictionary *)params
 withbResJson:(BOOL)bJson
 withCompleteBlock:(spCompleteBlock)completeBlock;
+
+-(spHeaderSignOrToken *)getHeaderSign;
 
 @end

@@ -65,10 +65,10 @@
     NSDictionary* parameters = nil;
     if(_data != nil && _data.length >0){
         NSString *length = [NSString stringWithFormat:@"%lu", _data.length];
-        parameters = [[NSDictionary alloc] initWithObjectsAndKeys:@"application/x-www-form-urlencoded", @"content_type", length, @"content_length", path, @"url",
+        parameters = [[NSDictionary alloc] initWithObjectsAndKeys:_option.mimeType, @"content_type", length, @"content_length", path, @"url",
                                     method, @"http_method",nil];
     }else{
-        parameters = [[NSDictionary alloc] initWithObjectsAndKeys:@"application/x-www-form-urlencoded", @"content_type", path, @"url",method, @"http_method",nil];
+        parameters = [[NSDictionary alloc] initWithObjectsAndKeys:_option.mimeType, @"content_type", path, @"url",method, @"http_method",nil];
     }
 
 
@@ -159,7 +159,7 @@
     // 传输参数
     NSString *method = @"PUT";
     NSMutableDictionary* parameters = [NSMutableDictionary dictionary];
-    parameters[@"content_type"] = @"application/x-www-form-urlencoded";
+    parameters[@"content_type"] = _option.mimeType;
     parameters[@"url"] = _path;
     parameters[@"http_method"] = method;
     [parameters addEntriesFromDictionary:_option.params];
@@ -179,7 +179,7 @@
 -(void)get{
     // 传输参数
     NSString *method = @"GET";
-    NSDictionary* parameters = [[NSDictionary alloc] initWithObjectsAndKeys:@"application/x-www-form-urlencoded", @"content_type", _path, @"url",method, @"http_method",nil];
+    NSDictionary* parameters = [[NSDictionary alloc] initWithObjectsAndKeys:_option.mimeType, @"content_type", _path, @"url",method, @"http_method",nil];
     
     [_httpManager simpleUp:_url withData:nil withParams:parameters withbResJson:_config.bResJsonType withCompleteBlock:^(spResponseInfo *info, NSDictionary *resp) {
         if (info.isOK) {
@@ -196,7 +196,7 @@
 -(void)del{
     // 传输参数
     NSString *method = @"DELETE";
-    NSDictionary* parameters = [[NSDictionary alloc] initWithObjectsAndKeys:@"application/x-www-form-urlencoded", @"content_type", _path, @"url",method, @"http_method",nil];
+    NSDictionary* parameters = [[NSDictionary alloc] initWithObjectsAndKeys:_option.mimeType, @"content_type", _path, @"url",method, @"http_method",nil];
     
     [_httpManager simpleUp:_url withData:nil withParams:parameters withbResJson:_config.bResJsonType withCompleteBlock:^(spResponseInfo *info, NSDictionary *resp) {
         if (info.isOK) {

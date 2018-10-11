@@ -13,14 +13,14 @@
 
 #import <MediaPlayer/MediaPlayer.h>
 
-//视频存储路径
+//图片存储路径
 #define KVideoUrlPath   \
 [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"VideoURL"]
 #define kHeight [[UIScreen mainScreen] bounds].size.height
 #define kWidth  [[UIScreen mainScreen] bounds].size.width
 
-#define ACCESSKEY @"your AccessKey"
-#define SECRETKEY @"your SecretKey"
+#define ACCESSKEY @"your accessKey"
+#define SECRETKEY @"your secretKey"
 
 @interface ViewController ()<spDownloadDelegate>
 
@@ -46,6 +46,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *downloadObjButton;
 @property (weak, nonatomic) IBOutlet UIButton *cancelDownloadObjButton;
 @property (weak, nonatomic) IBOutlet UIButton *continueDownloadObjButton;
+@property (weak, nonatomic) IBOutlet UIButton *getUrlButton;
+@property (weak, nonatomic) IBOutlet UILabel *urlShow;
 @property (weak, nonatomic) IBOutlet UILabel *objShow;
 @property (weak, nonatomic) IBOutlet UILabel *progressShow;
 @property (weak, nonatomic) IBOutlet UILabel *errorShow;
@@ -80,7 +82,7 @@
     [self.view addSubview:objNameLabel];
     
     // UILabel 对象名显示
-    [self.objShow setFrame:CGRectMake(20,50 + 11 * (40 + 3) , kWidth - 40, 40)];
+    [self.objShow setFrame:CGRectMake(20,50 + 12 * (40 + 3) , kWidth - 40, 40)];
     [self.objShow setText:@"对象名:"];
     [self.objShow setTextAlignment:NSTextAlignmentLeft];
     [self.objShow setTextColor:textColor];
@@ -88,7 +90,7 @@
     [self.view addSubview:self.objShow];
     
     // UILabel 错误显示
-    [self.errorShow setFrame:CGRectMake(20,50 + 12 * (40 + 3) , kWidth - 100, 40)];
+    [self.errorShow setFrame:CGRectMake(20,50 + 13 * (40 + 3) , kWidth - 100, 40)];
     [self.errorShow setText:@"返回信息:"];
     [self.errorShow setTextAlignment:NSTextAlignmentLeft];
     [self.errorShow setTextColor:textColor];
@@ -96,7 +98,7 @@
     [self.view addSubview:self.errorShow];
     
     // UILabel 详细..
-    UIButton * detailShow = [[UIButton alloc]initWithFrame:CGRectMake(20 + kWidth - 98,50 + 12 * (40 + 3) , 58, 40)];
+    UIButton * detailShow = [[UIButton alloc]initWithFrame:CGRectMake(20 + kWidth - 98,50 + 13 * (40 + 3) , 58, 40)];
     [detailShow setTitle:@"详细..." forState:UIControlStateNormal];
     [detailShow setTitleColor:textColor forState:UIControlStateNormal];
     [detailShow setBackgroundColor:[UIColor yellowColor]];
@@ -105,9 +107,9 @@
     
     _filePathField.enabled = NO;
     [_bucketField becomeFirstResponder];
-    self.appfileName = @"newUploadIOS.mp4";// 必须设置
-    _bucketField.text = @"IOSBucketTest";
-    _objField.text = @"IOSObjTest";
+    self.appfileName = @"newupload.mp4";// 必须设置
+    _bucketField.text = @"iosbucketsh";
+    _objField.text = @"iosobjtest";
     _bPauseStatus = NO;
     NSError *error = nil;
     
@@ -122,7 +124,7 @@
         builder.recorder = file;
     }];
      __weak typeof(self) weakSelf = self;
-    _opt = [[spUpLoadOption alloc] initWithMime:nil progressHandler:^(NSString *key, float percent) {
+    _opt = [[spUpLoadOption alloc] initWithMime:@"video/mpeg4" progressHandler:^(NSString *key, float percent) {
         NSLog(@"key:%@ percent:%f%%",key,percent*100.0);
         dispatch_async(dispatch_get_main_queue(), ^{
             [weakSelf showProcessText:[NSString stringWithFormat:@"进度:%f%%",percent * 100.0f]];
@@ -268,8 +270,21 @@
     [self.continueDownloadObjButton setTitleColor:textColor forState:UIControlStateNormal];
     [self.continueDownloadObjButton setBackgroundColor:backColor];
     
+    // Button 获取外链
+    [self.getUrlButton setFrame:CGRectMake(20, 50 + 10 * (40 + 3) , 80, 40)];
+    [self.getUrlButton setTitle:@"获取外链" forState:UIControlStateNormal];
+    [self.getUrlButton setTitleColor:textColor forState:UIControlStateNormal];
+    [self.getUrlButton setBackgroundColor:backColor];
+    
+    // UILabel 外链显示
+    [self.urlShow setFrame:CGRectMake(120,50 + 10 * (40 + 3) , kWidth - 100, 40)];
+    [self.urlShow  setText:@"URL:"];
+    [self.urlShow  setTextAlignment:NSTextAlignmentLeft];
+    [self.urlShow  setTextColor:textColor];
+    [self.urlShow  setBackgroundColor:[UIColor yellowColor]];
+    
     // UILabel 进度显示
-    [self.progressShow setFrame:CGRectMake(20,50 + 10 * (40 + 3) , kWidth - 40, 40)];
+    [self.progressShow setFrame:CGRectMake(20,50 + 11 * (40 + 3) , kWidth - 40, 40)];
     [self.progressShow  setText:@"进度:"];
     [self.progressShow  setTextAlignment:NSTextAlignmentLeft];
     [self.progressShow  setTextColor:textColor];
@@ -527,7 +542,7 @@
         NSLog(@"Click downloadObjButton");
         NSString * Bucket = _bucketField.text;
         NSString * obj = _objField.text;
-        NSString * downloadUrl = [NSString stringWithFormat:@"http://oss-cn-beijing.speedycloud.org/%@/%@",Bucket,obj];
+        NSString * downloadUrl = [NSString stringWithFormat:@"http://oss-cn-shanghai.speedycloud.org/%@/%@",Bucket,obj];
         
         // sessionManager start
 //        if (_downloadModel != nil && _downloadModel.state == spDownloadStateReadying) {
@@ -576,6 +591,15 @@
         NSString * Bucket = _bucketField.text;
         NSString * obj = _objField.text;
         [_downManager resumeWithDownloadModel:_downloadModel bucket:Bucket obj:obj];
+    } else if(YES == [sender isEqual:_getUrlButton]){
+        NSDate * expireDate = [[NSDate alloc] initWithTimeIntervalSinceNow:15*60];
+        //时间转时间戳的方法:
+        NSInteger timeSp = [[NSNumber numberWithDouble:[expireDate timeIntervalSince1970]] integerValue];
+        NSString * Bucket = _bucketField.text;
+        NSString * obj = _objField.text;
+        NSString * url = [_upManager getExternalUrl:Bucket obj:obj contentType:@"video/mpeg4" expireDate:timeSp];
+        NSLog(@"url:%@",url);
+        [self.urlShow setText:url];
     }
 }
 

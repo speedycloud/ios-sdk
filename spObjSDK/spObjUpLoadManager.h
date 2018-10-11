@@ -203,6 +203,19 @@ typedef void (^spUpCompletionHandler)(spResponseInfo *info, NSString *key, NSDic
             option:(spUpLoadOption*)option;
 
 /**
+ *    获取外链
+ *
+ *    @param bucket            bucket的名称
+ *    @param obj               obj的名称
+ *    @param contentType       content_type
+ *    @param timeStamp         过期时间戳
+ */
+- (NSString *)getExternalUrl:(NSString *)bucket
+                         obj:(NSString *)obj
+                 contentType:(NSString*)contentType
+                  expireDate:(NSInteger)timeStamp;
+
+/**
  *    下载文件
  *
  *    @param bucket            bucket的名称

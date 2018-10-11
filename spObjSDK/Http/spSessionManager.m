@@ -124,6 +124,10 @@ totalBytesExpectedToSend:(int64_t)totalBytesExpectedToSend {
     return self;
 }
 
+-(spHeaderSignOrToken *)getHeaderSign{
+    return _headerSignToken;
+}
+
 - (BOOL) isBlankString:(NSString *)string {
     if (string == nil || string == NULL) {
         return YES;

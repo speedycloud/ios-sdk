@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "spHeaderSignOrToken.h"
 
 @class spResponseInfo;
 
@@ -44,5 +45,7 @@ withCancelBlock:(spCancelBlock)cancelBlock
       withParams:(NSDictionary *)params
     withbResJson:(BOOL)bJson
 withCompleteBlock:(spCompleteBlock)completeBlock;
+
+- (spHeaderSignOrToken*)getHeaderSign;
 
 @end

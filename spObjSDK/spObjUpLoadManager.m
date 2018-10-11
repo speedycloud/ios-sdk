@@ -15,12 +15,14 @@
 #import "spResumeUpload.h"
 #import "spFile.h"
 #import "spResponseInfo.h"
+#import "GenerateExternalUrl.h"
 
 #define SDKVERSION @"1.0.1"
 
 @interface spObjUpLoadManager ()
 @property (nonatomic) id<spHttpDelegate> httpManager;
 @property (nonatomic) spConfigure *config;
+@property (nonatomic) GenerateExternalUrl *genExUrl;
 @end
 
 @implementation spObjUpLoadManager
@@ -49,6 +51,7 @@
         _config = config;
 #if (defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000) || (defined(__MAC_OS_X_VERSION_MAX_ALLOWED) && __MAC_OS_X_VERSION_MAX_ALLOWED >= 1090)
         _httpManager = [[spSessionManager alloc] initParams:_config.uploadAccessKey secretKey:_config.uploadSecretKey];
+        _genExUrl = [[GenerateExternalUrl alloc] initWithData:_config.uploadAccessKey withSecretKey:_config.uploadSecretKey];
 #endif
     }
     return self;
@@ -543,6 +546,32 @@
         }
         [self putFileInternal:file bucket:bucket obj:obj complete:completionHandler option:option];
     }
+}
+
+// 获取外链
+-(NSString *)getExternalUrl:(NSString *)bucket
+                  obj:(NSString *)obj
+                contentType:(NSString*)contentType
+                 expireDate:(NSInteger)timeStamp{
+    
+    NSString * path = [NSString stringWithFormat:@"%@/%@",bucket,obj];
+    NSString * url = [[NSString alloc] initWithFormat:@"%@/%@",_config.baseServer,path];
+    NSString * method = @"GET";
+    if(_config.bResJsonType){
+        if([url containsString:@"?"]) {
+            url = [NSString stringWithFormat:@"%@&ctype=json", url];
+        } else {
+            url = [NSString stringWithFormat:@"%@?ctype=json", url];
+        }
+    }
+    
+    if(contentType == nil || contentType == @""){
+        contentType = @"application/x-www-form-urlencoded";
+    }
+    NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:contentType, @"content_type", path, @"url",@"GET", @"http_method",nil];
+    NSDictionary *headers = [[_httpManager getHeaderSign] generateHeaders:method params:params isJson:TRUE];
+
+    return [_genExUrl generateExternalUrl:method expireDuration:timeStamp hostName:@"oss-cn-shanghai.speedycloud.org" bucket:bucket keyPath:obj];
 }
 
 // 下载文件

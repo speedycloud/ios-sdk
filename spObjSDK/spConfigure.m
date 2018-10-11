@@ -58,7 +58,7 @@ const UInt32 upSpBlockSize = (5 * 1024 * 1024);
 
 - (instancetype)init {
     if (self = [super init]) {
-        _baseServer = @"http://oss-cn-beijing.speedycloud.org";
+        _baseServer = @"http://oss-cn-shanghai.speedycloud.org";
         _uploadBucket = nil;
         _uploaKey = nil;
         _uploadAccessKey = nil;

@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "spObjSDK/spFormUpload.m"
-            timestampString = "543497199.984516"
+            timestampString = "560930090.8330849"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "76"
@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "spObjSDK/spFormUpload.m"
-            timestampString = "543497199.984568"
+            timestampString = "560930090.833156"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "89"
@@ -42,12 +42,12 @@
                   moduleName = "spObjDemo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/gyb/Dev/code/sourcetree/ObjectStorage/Platform/IOS/spObjDemo/spObjSDK/spFormUpload.m"
-                  timestampString = "547983342.457724"
+                  timestampString = "560930091.004673"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "89"
                   endingLineNumber = "89"
-                  offsetFromSymbolStart = "1120">
+                  offsetFromSymbolStart = "1292">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -57,7 +57,7 @@
                   moduleName = "spObjDemo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/gyb/Dev/code/sourcetree/ObjectStorage/Platform/IOS/spObjDemo/spObjSDK/spFormUpload.m"
-                  timestampString = "547983342.459487"
+                  timestampString = "560930091.006462"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "90"
@@ -68,11 +68,11 @@
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "__destroy_helper_block_.60"
+                  symbolName = "__destroy_helper_block_.58"
                   moduleName = "spObjDemo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/gyb/Dev/code/sourcetree/ObjectStorage/Platform/IOS/spObjDemo/spObjSDK/spFormUpload.m"
-                  timestampString = "547983342.461329"
+                  timestampString = "560930091.0081789"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "89"
@@ -89,11 +89,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "spObjSDK/Http/spSessionManager.m"
-            timestampString = "543498629.0287009"
+            timestampString = "560918649.734162"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "235"
-            endingLineNumber = "235"
+            startingLineNumber = "239"
+            endingLineNumber = "239"
             landmarkName = "-sendRequest2:withCompleteBlock:withProgressBlock:withCancelBlock:withData:withIpArray:withIndex:withDomain:withRetryTimes:withStartTime:withAccess:"
             landmarkType = "7">
          </BreakpointContent>
@@ -105,7 +105,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "spObjSDK/spFormUpload.m"
-            timestampString = "543497199.984671"
+            timestampString = "560930090.83324"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "68"
@@ -121,7 +121,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "spObjSDK/spFormUpload.m"
-            timestampString = "543497199.984713"
+            timestampString = "560930090.833292"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "71"
@@ -137,11 +137,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "spObjSDK/spObjUpLoadManager.m"
-            timestampString = "547971856.788373"
+            timestampString = "560930090.833347"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "186"
-            endingLineNumber = "186"
+            startingLineNumber = "189"
+            endingLineNumber = "189"
             landmarkName = "-deleteBucket:complete:"
             landmarkType = "7">
          </BreakpointContent>
@@ -153,7 +153,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "spObjSDK/spFormUpload.m"
-            timestampString = "543497199.984807"
+            timestampString = "560930090.833421"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "66"
@@ -185,11 +185,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "spObjSDK/spObjUpLoadManager.m"
-            timestampString = "547971856.788463"
+            timestampString = "560930090.83349"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "345"
-            endingLineNumber = "345"
+            startingLineNumber = "348"
+            endingLineNumber = "348"
             landmarkName = "-deleteObjForVersion:obj:versionId:complete:"
             landmarkType = "7">
          </BreakpointContent>
@@ -201,12 +201,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "spObjSDK/spObjUpLoadManager.h"
-            timestampString = "543498629.029035"
+            timestampString = "560930090.833562"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "228"
-            endingLineNumber = "228"
-            landmarkName = "-uploadFile:obj:filePath:complete:"
+            startingLineNumber = "231"
+            endingLineNumber = "231"
+            landmarkName = "-downloadFile:obj:complete:"
             landmarkType = "6">
          </BreakpointContent>
       </BreakpointProxy>
@@ -217,7 +217,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "spObjSDK/spResumeUpload.m"
-            timestampString = "547972700.183558"
+            timestampString = "560930090.8336149"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "293"
@@ -233,7 +233,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "spObjSDK/spResumeUpload.m"
-            timestampString = "547972700.183624"
+            timestampString = "560930090.833997"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "277"
@@ -249,7 +249,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "spObjSDK/spResumeUpload.m"
-            timestampString = "547972700.1836751"
+            timestampString = "560930090.8342741"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "301"
@@ -265,7 +265,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "spObjSDK/spResumeUpload.m"
-            timestampString = "547972700.183723"
+            timestampString = "560930090.834543"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "303"
@@ -281,7 +281,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "spObjSDK/spResumeUpload.m"
-            timestampString = "547972700.183768"
+            timestampString = "560930090.8348089"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "263"
@@ -297,7 +297,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "spObjSDK/spResumeUpload.m"
-            timestampString = "547972700.183814"
+            timestampString = "560930090.835075"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "268"
@@ -313,11 +313,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "spObjSDK/spObjUpLoadManager.m"
-            timestampString = "547971856.788784"
+            timestampString = "560930090.83535"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "540"
-            endingLineNumber = "540"
+            startingLineNumber = "543"
+            endingLineNumber = "543"
             landmarkName = "-uploadFile:obj:filePath:complete:option:"
             landmarkType = "7">
          </BreakpointContent>
@@ -328,28 +328,12 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "spObjSDK/spObjUpLoadManager.m"
-            timestampString = "547971856.788825"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
-            landmarkName = "-putFileInternal:bucket:obj:complete:option:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "spObjDemo/ViewController.m"
-            timestampString = "547983450.178239"
+            timestampString = "560930090.835423"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "553"
-            endingLineNumber = "553"
+            startingLineNumber = "574"
+            endingLineNumber = "574"
             landmarkName = "-buttonAction:"
             landmarkType = "7">
          </BreakpointContent>
@@ -367,6 +351,102 @@
             startingLineNumber = "18"
             endingLineNumber = "18"
             landmarkName = "-downloadTaskWithCorrectResumeData:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "spObjDemo/ViewController.m"
+            timestampString = "560930090.835505"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "327"
+            endingLineNumber = "327"
+            landmarkName = "-buttonAction:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "spObjSDK/spObjUpLoadManager.m"
+            timestampString = "560930090.835567"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "171"
+            endingLineNumber = "171"
+            landmarkName = "-createBucket:complete:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "spObjSDK/spObjUpLoadManager.m"
+            timestampString = "560930090.835632"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
+            landmarkName = "-queryBucketAcl:complete:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "spObjSDK/spResumeUpload.m"
+            timestampString = "560930090.835741"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "426"
+            endingLineNumber = "426"
+            landmarkName = "-post:withUrlExtends:withData:withCompleteBlock:withProgressBlock:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "spObjSDK/spResumeUpload.m"
+            timestampString = "560930090.835997"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "446"
+            endingLineNumber = "446"
+            landmarkName = "-put:withUrlExtends:withData:withCompleteBlock:withProgressBlock:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "spObjSDK/spResumeUpload.m"
+            timestampString = "560930126.382537"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "434"
+            endingLineNumber = "434"
+            landmarkName = "-post:withUrlExtends:withData:withCompleteBlock:withProgressBlock:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
