@@ -59,6 +59,6 @@ static NSTimeInterval _clockskew = 0.0;
     
     [queryString appendFormat:@"%@=%@", @"Signature", hash];
     
-    return [NSString stringWithFormat:@"%@://%@.%@/%@?%@",@"https" ,bucket, hostname, keyPath, queryString];
+    return [NSString stringWithFormat:@"%@://%@/%@/%@?%@",@"https" , hostname,bucket, keyPath, queryString];
 }
 @end

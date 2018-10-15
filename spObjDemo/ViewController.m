@@ -107,9 +107,9 @@
     
     _filePathField.enabled = NO;
     [_bucketField becomeFirstResponder];
-    self.appfileName = @"newupload.mp4";// 必须设置
+    self.appfileName = @"newupload.jpeg";// 必须设置
     _bucketField.text = @"iosbucketsh";
-    _objField.text = @"iosobjtest";
+    _objField.text = @"iosobjtest.jpeg";
     _bPauseStatus = NO;
     NSError *error = nil;
     
@@ -124,7 +124,7 @@
         builder.recorder = file;
     }];
      __weak typeof(self) weakSelf = self;
-    _opt = [[spUpLoadOption alloc] initWithMime:@"video/mpeg4" progressHandler:^(NSString *key, float percent) {
+    _opt = [[spUpLoadOption alloc] initWithMime:@"image/jpeg" progressHandler:^(NSString *key, float percent) {
         NSLog(@"key:%@ percent:%f%%",key,percent*100.0);
         dispatch_async(dispatch_get_main_queue(), ^{
             [weakSelf showProcessText:[NSString stringWithFormat:@"进度:%f%%",percent * 100.0f]];
@@ -597,7 +597,7 @@
         NSInteger timeSp = [[NSNumber numberWithDouble:[expireDate timeIntervalSince1970]] integerValue];
         NSString * Bucket = _bucketField.text;
         NSString * obj = _objField.text;
-        NSString * url = [_upManager getExternalUrl:Bucket obj:obj contentType:@"video/mpeg4" expireDate:timeSp];
+        NSString * url = [_upManager getExternalUrl:Bucket obj:obj contentType:@"image/jpeg" expireDate:1543593600];
         NSLog(@"url:%@",url);
         [self.urlShow setText:url];
     }
@@ -613,7 +613,7 @@
         UIImagePickerController *picker = [[UIImagePickerController alloc] init];
         picker.delegate = self;
         picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-        picker.mediaTypes =@[(NSString*)kUTTypeMovie];
+        picker.mediaTypes = [[NSArray alloc] initWithObjects:(NSString*)kUTTypeImage,nil];
         picker.allowsEditing = NO;
         [self presentViewController:picker animated:YES completion:nil];
     }else {
