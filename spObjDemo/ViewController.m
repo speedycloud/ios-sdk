@@ -597,7 +597,7 @@
         NSInteger timeSp = [[NSNumber numberWithDouble:[expireDate timeIntervalSince1970]] integerValue];
         NSString * Bucket = _bucketField.text;
         NSString * obj = _objField.text;
-        NSString * url = [_upManager getExternalUrl:Bucket obj:obj contentType:@"image/jpeg" expireDate:1543593600];
+        NSString * url = [_upManager getExternalUrl:Bucket obj:obj contentType:@"image/jpeg" expireDate:timeSp];
         NSLog(@"url:%@",url);
         [self.urlShow setText:url];
     }
