@@ -7,6 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0136357E2177105300B13CC5 /* PhotosTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0136357D2177105300B13CC5 /* PhotosTool.m */; };
+		013635892177105D00B13CC5 /* ShowVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 013635802177105D00B13CC5 /* ShowVC.m */; };
+		0136358A2177105D00B13CC5 /* PhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 013635812177105D00B13CC5 /* PhotoCell.m */; };
+		0136358B2177105D00B13CC5 /* AlbumsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 013635832177105D00B13CC5 /* AlbumsVC.m */; };
+		0136358C2177105D00B13CC5 /* PhotosVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 013635842177105D00B13CC5 /* PhotosVC.m */; };
+		0136358D2177105D00B13CC5 /* ShowVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 013635872177105D00B13CC5 /* ShowVC.xib */; };
+		0136358E2177105D00B13CC5 /* PhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 013635882177105D00B13CC5 /* PhotoCell.xib */; };
+		0136359221772ECC00B13CC5 /* iosBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 0136359121772ECC00B13CC5 /* iosBack.png */; };
+		01363596217737E900B13CC5 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 01363594217737E900B13CC5 /* LICENSE.txt */; };
+		01363597217737E900B13CC5 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 01363595217737E900B13CC5 /* README.md */; };
+		013635A22177381600B13CC5 /* SVProgressAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 013635992177381600B13CC5 /* SVProgressAnimatedView.m */; };
+		013635A32177381600B13CC5 /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0136359A2177381600B13CC5 /* SVRadialGradientLayer.m */; };
+		013635A42177381600B13CC5 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 0136359C2177381600B13CC5 /* SVProgressHUD.m */; };
+		013635A52177381600B13CC5 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0136359D2177381600B13CC5 /* SVProgressHUD.bundle */; };
+		013635A62177381600B13CC5 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0136359F2177381600B13CC5 /* SVIndefiniteAnimatedView.m */; };
 		0136E3E1216DFE6600143B51 /* GenerateExternalUrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 0136E3E0216DFE6600143B51 /* GenerateExternalUrl.m */; };
 		0146C85E205A5A4300C6AEC1 /* spSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0146C85D205A5A4300C6AEC1 /* spSessionManager.m */; };
 		015577B220A465E600860A4F /* UIViewController+CBPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 015577B120A465E600860A4F /* UIViewController+CBPopup.m */; };
@@ -18,7 +33,6 @@
 		0156C5542054588A00659230 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0156C5532054588A00659230 /* main.m */; };
 		0156C55E2054588A00659230 /* spObjDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0156C55D2054588A00659230 /* spObjDemoTests.m */; };
 		0156C5692054588A00659230 /* spObjDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0156C5682054588A00659230 /* spObjDemoUITests.m */; };
-		0156C58620545F5A00659230 /* iosBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 0156C58520545F5A00659230 /* iosBack.png */; };
 		015A4D22205F6EA300188D5D /* spAsyncRun.m in Sources */ = {isa = PBXBuildFile; fileRef = 015A4D21205F6EA300188D5D /* spAsyncRun.m */; };
 		015A4D26205FA27100188D5D /* spFormUpload.m in Sources */ = {isa = PBXBuildFile; fileRef = 015A4D25205FA27100188D5D /* spFormUpload.m */; };
 		015B621E2071DFB3002AC63B /* spUpLoadOption.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 015F686E205BC353000A0FE5 /* spUpLoadOption.h */; };
@@ -125,6 +139,32 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		013635762176E8C300B13CC5 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		013635772176E8C300B13CC5 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		0136357C2177105300B13CC5 /* PhotosTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotosTool.h; sourceTree = "<group>"; };
+		0136357D2177105300B13CC5 /* PhotosTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotosTool.m; sourceTree = "<group>"; };
+		0136357F2177105D00B13CC5 /* ShowVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowVC.h; sourceTree = "<group>"; };
+		013635802177105D00B13CC5 /* ShowVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowVC.m; sourceTree = "<group>"; };
+		013635812177105D00B13CC5 /* PhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoCell.m; sourceTree = "<group>"; };
+		013635822177105D00B13CC5 /* PhotosVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotosVC.h; sourceTree = "<group>"; };
+		013635832177105D00B13CC5 /* AlbumsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumsVC.m; sourceTree = "<group>"; };
+		013635842177105D00B13CC5 /* PhotosVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotosVC.m; sourceTree = "<group>"; };
+		013635852177105D00B13CC5 /* AlbumsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumsVC.h; sourceTree = "<group>"; };
+		013635862177105D00B13CC5 /* PhotoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoCell.h; sourceTree = "<group>"; };
+		013635872177105D00B13CC5 /* ShowVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShowVC.xib; sourceTree = "<group>"; };
+		013635882177105D00B13CC5 /* PhotoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoCell.xib; sourceTree = "<group>"; };
+		0136359121772ECC00B13CC5 /* iosBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iosBack.png; sourceTree = "<group>"; };
+		01363594217737E900B13CC5 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		01363595217737E900B13CC5 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		013635992177381600B13CC5 /* SVProgressAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVProgressAnimatedView.m; path = spObjDemo/SVProgressHUD/SVProgressHUD/SVProgressAnimatedView.m; sourceTree = SOURCE_ROOT; };
+		0136359A2177381600B13CC5 /* SVRadialGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVRadialGradientLayer.m; path = spObjDemo/SVProgressHUD/SVProgressHUD/SVRadialGradientLayer.m; sourceTree = SOURCE_ROOT; };
+		0136359B2177381600B13CC5 /* SVProgressAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVProgressAnimatedView.h; path = spObjDemo/SVProgressHUD/SVProgressHUD/SVProgressAnimatedView.h; sourceTree = SOURCE_ROOT; };
+		0136359C2177381600B13CC5 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVProgressHUD.m; path = spObjDemo/SVProgressHUD/SVProgressHUD/SVProgressHUD.m; sourceTree = SOURCE_ROOT; };
+		0136359D2177381600B13CC5 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = SVProgressHUD.bundle; path = spObjDemo/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle; sourceTree = SOURCE_ROOT; };
+		0136359E2177381600B13CC5 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVProgressHUD.h; path = spObjDemo/SVProgressHUD/SVProgressHUD/SVProgressHUD.h; sourceTree = SOURCE_ROOT; };
+		0136359F2177381600B13CC5 /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVIndefiniteAnimatedView.m; path = spObjDemo/SVProgressHUD/SVProgressHUD/SVIndefiniteAnimatedView.m; sourceTree = SOURCE_ROOT; };
+		013635A02177381600B13CC5 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVIndefiniteAnimatedView.h; path = spObjDemo/SVProgressHUD/SVProgressHUD/SVIndefiniteAnimatedView.h; sourceTree = SOURCE_ROOT; };
+		013635A12177381600B13CC5 /* SVRadialGradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVRadialGradientLayer.h; path = spObjDemo/SVProgressHUD/SVProgressHUD/SVRadialGradientLayer.h; sourceTree = SOURCE_ROOT; };
 		0136E3DF216DFE6600143B51 /* GenerateExternalUrl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GenerateExternalUrl.h; sourceTree = "<group>"; };
 		0136E3E0216DFE6600143B51 /* GenerateExternalUrl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GenerateExternalUrl.m; sourceTree = "<group>"; };
 		0146C85C205A5A4300C6AEC1 /* spSessionManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = spSessionManager.h; sourceTree = "<group>"; };
@@ -148,7 +188,6 @@
 		0156C5642054588A00659230 /* spObjDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = spObjDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0156C5682054588A00659230 /* spObjDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = spObjDemoUITests.m; sourceTree = "<group>"; };
 		0156C56A2054588A00659230 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0156C58520545F5A00659230 /* iosBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iosBack.png; sourceTree = "<group>"; };
 		015A4D20205F6EA300188D5D /* spAsyncRun.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = spAsyncRun.h; sourceTree = "<group>"; };
 		015A4D21205F6EA300188D5D /* spAsyncRun.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = spAsyncRun.m; sourceTree = "<group>"; };
 		015A4D24205FA27100188D5D /* spFormUpload.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = spFormUpload.h; sourceTree = "<group>"; };
@@ -223,6 +262,59 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0136357A21770FFD00B13CC5 /* Albums */ = {
+			isa = PBXGroup;
+			children = (
+				013635852177105D00B13CC5 /* AlbumsVC.h */,
+				013635832177105D00B13CC5 /* AlbumsVC.m */,
+				013635862177105D00B13CC5 /* PhotoCell.h */,
+				013635812177105D00B13CC5 /* PhotoCell.m */,
+				013635882177105D00B13CC5 /* PhotoCell.xib */,
+				013635822177105D00B13CC5 /* PhotosVC.h */,
+				013635842177105D00B13CC5 /* PhotosVC.m */,
+				0136357F2177105D00B13CC5 /* ShowVC.h */,
+				013635802177105D00B13CC5 /* ShowVC.m */,
+				013635872177105D00B13CC5 /* ShowVC.xib */,
+			);
+			path = Albums;
+			sourceTree = "<group>";
+		};
+		0136357B2177100700B13CC5 /* PhotoTool */ = {
+			isa = PBXGroup;
+			children = (
+				0136357C2177105300B13CC5 /* PhotosTool.h */,
+				0136357D2177105300B13CC5 /* PhotosTool.m */,
+			);
+			path = PhotoTool;
+			sourceTree = "<group>";
+		};
+		01363593217737C700B13CC5 /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				01363598217737F400B13CC5 /* SVProgressHUD */,
+				01363594217737E900B13CC5 /* LICENSE.txt */,
+				01363595217737E900B13CC5 /* README.md */,
+			);
+			path = SVProgressHUD;
+			sourceTree = "<group>";
+		};
+		01363598217737F400B13CC5 /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				013635A02177381600B13CC5 /* SVIndefiniteAnimatedView.h */,
+				0136359F2177381600B13CC5 /* SVIndefiniteAnimatedView.m */,
+				0136359B2177381600B13CC5 /* SVProgressAnimatedView.h */,
+				013635992177381600B13CC5 /* SVProgressAnimatedView.m */,
+				0136359D2177381600B13CC5 /* SVProgressHUD.bundle */,
+				0136359E2177381600B13CC5 /* SVProgressHUD.h */,
+				0136359C2177381600B13CC5 /* SVProgressHUD.m */,
+				013635A12177381600B13CC5 /* SVRadialGradientLayer.h */,
+				0136359A2177381600B13CC5 /* SVRadialGradientLayer.m */,
+			);
+			name = SVProgressHUD;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		0146C85B205A098C00C6AEC1 /* Http */ = {
 			isa = PBXGroup;
 			children = (
@@ -265,9 +357,12 @@
 		0156C5432054588A00659230 /* spObjDemo */ = {
 			isa = PBXGroup;
 			children = (
+				01363593217737C700B13CC5 /* SVProgressHUD */,
+				0136359121772ECC00B13CC5 /* iosBack.png */,
+				0136357B2177100700B13CC5 /* PhotoTool */,
+				0136357A21770FFD00B13CC5 /* Albums */,
 				015577B020A465E500860A4F /* UIViewController+CBPopup.h */,
 				015577B120A465E600860A4F /* UIViewController+CBPopup.m */,
-				0156C58520545F5A00659230 /* iosBack.png */,
 				0156C5442054588A00659230 /* AppDelegate.h */,
 				0156C5452054588A00659230 /* AppDelegate.m */,
 				0156C5472054588A00659230 /* ViewController.h */,
@@ -493,10 +588,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0136358E2177105D00B13CC5 /* PhotoCell.xib in Resources */,
+				013635A52177381600B13CC5 /* SVProgressHUD.bundle in Resources */,
 				0156C5512054588A00659230 /* LaunchScreen.storyboard in Resources */,
+				0136359221772ECC00B13CC5 /* iosBack.png in Resources */,
 				0156C54E2054588A00659230 /* Assets.xcassets in Resources */,
-				0156C58620545F5A00659230 /* iosBack.png in Resources */,
+				0136358D2177105D00B13CC5 /* ShowVC.xib in Resources */,
 				0156C54C2054588A00659230 /* Main.storyboard in Resources */,
+				01363597217737E900B13CC5 /* README.md in Resources */,
+				01363596217737E900B13CC5 /* LICENSE.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -522,9 +622,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				0156C5492054588A00659230 /* ViewController.m in Sources */,
+				013635A62177381600B13CC5 /* SVIndefiniteAnimatedView.m in Sources */,
+				013635A22177381600B13CC5 /* SVProgressAnimatedView.m in Sources */,
+				0136357E2177105300B13CC5 /* PhotosTool.m in Sources */,
+				0136358B2177105D00B13CC5 /* AlbumsVC.m in Sources */,
 				0156C5542054588A00659230 /* main.m in Sources */,
+				013635A42177381600B13CC5 /* SVProgressHUD.m in Sources */,
+				0136358C2177105D00B13CC5 /* PhotosVC.m in Sources */,
+				0136358A2177105D00B13CC5 /* PhotoCell.m in Sources */,
+				013635892177105D00B13CC5 /* ShowVC.m in Sources */,
 				015577B220A465E600860A4F /* UIViewController+CBPopup.m in Sources */,
 				0156C5462054588A00659230 /* AppDelegate.m in Sources */,
+				013635A32177381600B13CC5 /* SVRadialGradientLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -590,6 +699,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				0156C54B2054588A00659230 /* Base */,
+				013635762176E8C300B13CC5 /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -598,6 +708,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				0156C5502054588A00659230 /* Base */,
+				013635772176E8C300B13CC5 /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -609,6 +720,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -664,6 +776,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

@@ -557,18 +557,20 @@
     NSString * path = [NSString stringWithFormat:@"%@/%@",bucket,obj];
     NSString * url = [[NSString alloc] initWithFormat:@"%@/%@",_config.baseServer,path];
     NSString * method = @"GET";
+    
+    if(contentType == nil || contentType == @""){
+        contentType = @"application/x-www-form-urlencoded";
+    }
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] initWithObjectsAndKeys:contentType, @"content_type", path, @"url",@"GET", @"http_method",nil];
+    
     if(_config.bResJsonType){
+        [params setValue:@"json" forKey:@"Sc-Resp-Content-Type"];
         if([url containsString:@"?"]) {
             url = [NSString stringWithFormat:@"%@&ctype=json", url];
         } else {
             url = [NSString stringWithFormat:@"%@?ctype=json", url];
         }
     }
-    
-    if(contentType == nil || contentType == @""){
-        contentType = @"application/x-www-form-urlencoded";
-    }
-    NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:contentType, @"content_type", path, @"url",@"GET", @"http_method",nil];
     NSDictionary *headers = [[_httpManager getHeaderSign] generateHeaders:method params:params isJson:TRUE];
 
     return [_genExUrl generateExternalUrl:method expireDuration:timeStamp hostName:@"oss-cn-shanghai.speedycloud.org" bucket:bucket keyPath:obj];

@@ -422,13 +422,17 @@ NSString * const NSUpLoad_Step3 = @"step3";
     
     NSString *path = [[NSString alloc] initWithFormat:@"%@/%@%@", _bucket,_key,urlExtends];
     NSString *method = @"POST";
-    NSDictionary* parameters = nil;
+    NSMutableDictionary* parameters = nil;
     if(data != nil && data.length >0){
         NSString *length = [NSString stringWithFormat:@"%lu", data.length];
-        parameters = [[NSDictionary alloc] initWithObjectsAndKeys:_option.mimeType, @"content_type", length, @"content_length", path, @"url",
+        parameters = [[NSMutableDictionary alloc] initWithObjectsAndKeys:_option.mimeType, @"content_type", length, @"content_length", path, @"url",
                       method, @"http_method",nil];
     }else{
-        parameters = [[NSDictionary alloc] initWithObjectsAndKeys:_option.mimeType, @"content_type", path, @"url",method, @"http_method",nil];
+        parameters = [[NSMutableDictionary alloc] initWithObjectsAndKeys:_option.mimeType, @"content_type", path, @"url",method, @"http_method",nil];
+    }
+    
+    if(_config.bResJsonType){
+        [parameters setValue:@"json" forKey:@"Sc-Resp-Content-Type"];
     }
     
     [_httpManager multipartUp:url withMethod:method withData:data withParams:parameters withHeaders:_headers withCompleteBlock:completeBlock withProgressBlock:progressBlock withCancelBlock:_option.cancellationSignal withAccess:_access];
@@ -443,8 +447,12 @@ withProgressBlock:(spInternalProgressBlock)progressBlock {
     NSString *path = [[NSString alloc] initWithFormat:@"%@/%@%@", _bucket,_key,urlExtends];
     NSString *method = @"PUT";
     NSString *length = [NSString stringWithFormat:@"%lu", data.length];
-    NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:_option.mimeType, @"content_type", length, @"content_length", path, @"url",
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] initWithObjectsAndKeys:_option.mimeType, @"content_type", length, @"content_length", path, @"url",
                             method, @"http_method",nil];
+    
+    if(_config.bResJsonType){
+        [params setValue:@"json" forKey:@"Sc-Resp-Content-Type"];
+    }
     
     [_httpManager multipartUp:url withMethod:method withData:data withParams:params withHeaders:_headers withCompleteBlock:completeBlock withProgressBlock:progressBlock withCancelBlock:_option.cancellationSignal withAccess:_access];
 }

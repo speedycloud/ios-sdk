@@ -10,47 +10,21 @@
 #import "spObjSDK.h"
 #import <MobileCoreServices/MobileCoreServices.h>
 #import <AssetsLibrary/AssetsLibrary.h>
+#import <Photos/Photos.h>
+#import "AlbumsVC.h"
 
 #import <MediaPlayer/MediaPlayer.h>
 
 //图片存储路径
 #define KVideoUrlPath   \
-[[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"VideoURL"]
+[[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"PhotoURL"]
 #define kHeight [[UIScreen mainScreen] bounds].size.height
 #define kWidth  [[UIScreen mainScreen] bounds].size.width
 
-#define ACCESSKEY @"your accessKey"
-#define SECRETKEY @"your secretKey"
+#define ACCESSKEY @"D45CFEE53110F9EC03D559EF8E2372C6"
+#define SECRETKEY @"26e5a70bdb0a5eb8100eae1fbebefedfb2d30530e98b3c144c07627f2cc20a32"
 
 @interface ViewController ()<spDownloadDelegate>
-
-@property (weak, nonatomic) IBOutlet UITextField *filePathField;
-@property (weak, nonatomic) IBOutlet UITextField *bucketField;
-@property (weak, nonatomic) IBOutlet UITextField *objField;
-@property (weak, nonatomic) IBOutlet UIButton *pushButton;
-@property (weak, nonatomic) IBOutlet UIButton *cancelPushButton;
-@property (weak, nonatomic) IBOutlet UIButton *continuePushButton;
-@property (weak, nonatomic) IBOutlet UIButton *scanButton;
-@property (weak, nonatomic) IBOutlet UIButton *queryBucketButton;
-@property (weak, nonatomic) IBOutlet UIButton *createBucketButton;
-@property (weak, nonatomic) IBOutlet UIButton *deleteBucketButton;
-@property (weak, nonatomic) IBOutlet UIButton *updateBucketButton;
-@property (weak, nonatomic) IBOutlet UIButton *setBucketVersionButton;
-@property (weak, nonatomic) IBOutlet UIButton *deleteObjButton;
-@property (weak, nonatomic) IBOutlet UIButton *deleteObjForVersionButton;
-@property (weak, nonatomic) IBOutlet UIButton *updateObjButton;
-@property (weak, nonatomic) IBOutlet UIButton *queryObjButton;
-@property (weak, nonatomic) IBOutlet UIButton *queryAllObjButton;
-@property (weak, nonatomic) IBOutlet UIButton *queryBucketVersionButton;
-@property (weak, nonatomic) IBOutlet UIButton *queryAllObjVersionButton;
-@property (weak, nonatomic) IBOutlet UIButton *downloadObjButton;
-@property (weak, nonatomic) IBOutlet UIButton *cancelDownloadObjButton;
-@property (weak, nonatomic) IBOutlet UIButton *continueDownloadObjButton;
-@property (weak, nonatomic) IBOutlet UIButton *getUrlButton;
-@property (weak, nonatomic) IBOutlet UILabel *urlShow;
-@property (weak, nonatomic) IBOutlet UILabel *objShow;
-@property (weak, nonatomic) IBOutlet UILabel *progressShow;
-@property (weak, nonatomic) IBOutlet UILabel *errorShow;
 
 @property (nonatomic,strong) spDownloadModel *downloadModel;
 @property spDownloadSessionManager *downManager;
@@ -58,6 +32,17 @@
 @end
 
 @implementation ViewController
+
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBar.hidden = YES;
+    if(self.uploadFilePath.length > 0){
+        NSLog(@"选择图片后返回的要上传 url:%@",self.uploadFilePath);
+        [self prePush];
+    }
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -82,20 +67,20 @@
     [self.view addSubview:objNameLabel];
     
     // UILabel 对象名显示
-    [self.objShow setFrame:CGRectMake(20,50 + 12 * (40 + 3) , kWidth - 40, 40)];
-    [self.objShow setText:@"对象名:"];
-    [self.objShow setTextAlignment:NSTextAlignmentLeft];
-    [self.objShow setTextColor:textColor];
-    [self.objShow setBackgroundColor:[UIColor yellowColor]];
-    [self.view addSubview:self.objShow];
+    _objShow = [[UILabel alloc]initWithFrame:CGRectMake(20,50 + 12 * (40 + 3) , kWidth - 40, 40)];
+    [_objShow setText:@"对象名:"];
+    [_objShow setTextAlignment:NSTextAlignmentLeft];
+    [_objShow setTextColor:textColor];
+    [_objShow setBackgroundColor:[UIColor yellowColor]];
+    [self.view addSubview:_objShow];
     
     // UILabel 错误显示
-    [self.errorShow setFrame:CGRectMake(20,50 + 13 * (40 + 3) , kWidth - 100, 40)];
-    [self.errorShow setText:@"返回信息:"];
-    [self.errorShow setTextAlignment:NSTextAlignmentLeft];
-    [self.errorShow setTextColor:textColor];
-    [self.errorShow setBackgroundColor:[UIColor yellowColor]];
-    [self.view addSubview:self.errorShow];
+    _errorShow = [[UILabel alloc]initWithFrame:CGRectMake(20,50 + 13 * (40 + 3) , kWidth - 100, 40)];
+    [_errorShow setText:@"返回信息:"];
+    [_errorShow setTextAlignment:NSTextAlignmentLeft];
+    [_errorShow setTextColor:textColor];
+    [_errorShow setBackgroundColor:[UIColor yellowColor]];
+    [self.view addSubview:_errorShow];
     
     // UILabel 详细..
     UIButton * detailShow = [[UIButton alloc]initWithFrame:CGRectMake(20 + kWidth - 98,50 + 13 * (40 + 3) , 58, 40)];
@@ -105,11 +90,19 @@
     [detailShow addTarget:self action:@selector(showDetailInfoClick) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:detailShow];
     
-    _filePathField.enabled = NO;
-    [_bucketField becomeFirstResponder];
-    self.appfileName = @"newupload.jpeg";// 必须设置
-    _bucketField.text = @"iosbucketsh";
-    _objField.text = @"iosobjtest.jpeg";
+//    _bucketField = [[UITextField alloc] initWithFrame:CGRectMake(20 + 82 ,50 + 40 + 3 , (kWidth - 20 - 80), 40)];
+//    _bucketField.font = [UIFont fontWithName:@"Arial" size:20.0f];
+//    [_bucketField setText:@"iosbucketsh"];
+//    [self.view addSubview:_bucketField];
+//
+//    _objField = [[UITextField alloc] initWithFrame:CGRectMake(20 + 82 ,50 + 2 * (40 + 3) , (kWidth - 20 - 80), 40)];
+//    _objField.font = [UIFont fontWithName:@"Arial" size:20.0f];
+//    [_objField setText:@"iosobjtest.jpeg"];
+//    [self.view addSubview:_objField];
+//    [_bucketField becomeFirstResponder];
+    
+    _appfileName = @"newupload.jpeg";// 保存沙盒中的文件名称
+    
     _bPauseStatus = NO;
     NSError *error = nil;
     
@@ -151,155 +144,222 @@
     UIColor *textColor = [UIColor colorWithRed:0.1f green:0.1f blue:0.9f alpha:1.0f];
     
     // Edit 桶名
-    [self.bucketField setFrame:CGRectMake(20 + 80 + 3 ,50 , kWidth - 40 - 80 -3, 40)];
-    [self.bucketField setPlaceholder:@"请输入桶名"];
-    [self.bucketField setTextColor:textColor];
-    [self.bucketField setBackgroundColor:[UIColor whiteColor]];
+    _bucketField = [[UITextField alloc] initWithFrame:CGRectMake(20 + 80 + 3 ,50 , kWidth - 40 - 80 -3, 40)];
+    [_bucketField setPlaceholder:@"请输入桶名"];
+    [_bucketField setTextColor:textColor];
+    [_bucketField setBackgroundColor:[UIColor whiteColor]];
+    _bucketField.font = [UIFont fontWithName:@"Arial" size:20.0f];
+    [_bucketField setText:@"iosbucketsh"];
+    [self.view addSubview:_bucketField];
     
     // Edit 对象名
-    [self.objField setFrame:CGRectMake(20 + 80 + 3 ,50 + 40 + 3, kWidth - 40 - 80 -3, 40)];
-    [self.objField setPlaceholder:@"请输入对象名"];
-    [self.objField setTextColor:textColor];
-    [self.objField setBackgroundColor:[UIColor whiteColor]];
+    _objField = [[UITextField alloc] initWithFrame:CGRectMake(20 + 80 + 3 ,50 + 40 + 3, kWidth - 40 - 80 -3, 40)];
+    [_objField setFrame:CGRectMake(20 + 80 + 3 ,50 + 40 + 3, kWidth - 40 - 80 -3, 40)];
+    [_objField setPlaceholder:@"请输入对象名"];
+    [_objField setTextColor:textColor];
+    [_objField setBackgroundColor:[UIColor whiteColor]];
+    _objField.font = [UIFont fontWithName:@"Arial" size:20.0f];
+    [_objField setText:@"iosobjtest.jpeg"];
+    [self.view addSubview:_objField];
     
     // Button 创建桶
-    [self.createBucketButton setFrame:CGRectMake(20 ,50 + 2*(40 + 3) , (kWidth - 40)/2 - 2, 40)];
-    [self.createBucketButton setTitle:@"创建桶" forState:UIControlStateNormal];
-    [self.createBucketButton setTitleColor:textColor forState:UIControlStateNormal];
-    [self.createBucketButton setBackgroundColor:backColor];
+    _createBucketButton = [[UIButton alloc] initWithFrame:CGRectMake(20 ,50 + 2*(40 + 3) , (kWidth - 40)/2 - 2, 40)];
+    [_createBucketButton setTitle:@"创建桶" forState:UIControlStateNormal];
+    [_createBucketButton setTitleColor:textColor forState:UIControlStateNormal];
+    [_createBucketButton setBackgroundColor:backColor];
+    [_createBucketButton addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_createBucketButton];
     
     // Button 查询桶权限
-    [self.queryBucketButton setFrame:CGRectMake(20 + (kWidth - 40)/2 + 2 ,50 + 2*(40 + 3) , (kWidth - 40)/2 - 2, 40)];
-    [self.queryBucketButton setTitle:@"查询桶权限" forState:UIControlStateNormal];
-    [self.queryBucketButton setTitleColor:textColor forState:UIControlStateNormal];
-    [self.queryBucketButton setBackgroundColor:backColor];
+    _queryBucketButton = [[UIButton alloc] initWithFrame:CGRectMake(20 + (kWidth - 40)/2 + 2 ,50 + 2*(40 + 3) , (kWidth - 40)/2 - 2, 40)];
+    [_queryBucketButton setTitle:@"查询桶权限" forState:UIControlStateNormal];
+    [_queryBucketButton setTitleColor:textColor forState:UIControlStateNormal];
+    [_queryBucketButton setBackgroundColor:backColor];
+    [_queryBucketButton addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_queryBucketButton];
     
-    // Button 上传对象
-    [self.pushButton setFrame:CGRectMake(20 ,50 + 3*(40 + 3) , (kWidth - 40)/2 - 2, 40)];
-    [self.pushButton setTitle:@"上传对象" forState:UIControlStateNormal];
-    [self.pushButton setTitleColor:textColor forState:UIControlStateNormal];
-    [self.pushButton setBackgroundColor:backColor];
+    // Button 上传图片
+    _pushButton = [[UIButton alloc] initWithFrame:CGRectMake(20 ,50 + 3*(40 + 3) , (kWidth - 40)/4, 40)];
+    [_pushButton setTitle:@"上传图片" forState:UIControlStateNormal];
+    [_pushButton setTitleColor:textColor forState:UIControlStateNormal];
+    [_pushButton setBackgroundColor:backColor];
+    [_pushButton addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_pushButton];
+    
+    // Button 拍摄上传
+    _takePhotoPushButton = [[UIButton alloc] initWithFrame:CGRectMake(20 + (kWidth - 40)/4 + 1,50 + 3*(40 + 3) , (kWidth - 40)/4, 40)];
+    [_takePhotoPushButton setTitle:@"拍摄上传" forState:UIControlStateNormal];
+    [_takePhotoPushButton setTitleColor:textColor forState:UIControlStateNormal];
+    [_takePhotoPushButton setBackgroundColor:backColor];
+    [_takePhotoPushButton addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_takePhotoPushButton];
     
     // Button 暂停上传
-    [self.cancelPushButton setFrame:CGRectMake(20 + (kWidth - 40)/2 + 2 ,50 + 3*(40 + 3) , (kWidth - 40)/4 - 2, 40)];
-    [self.cancelPushButton setTitle:@"暂停上传" forState:UIControlStateNormal];
-    [self.cancelPushButton setTitleColor:textColor forState:UIControlStateNormal];
-    [self.cancelPushButton setBackgroundColor:backColor];
+    _cancelPushButton = [[UIButton alloc] initWithFrame:CGRectMake(20 + (kWidth - 40)/2 + 2 ,50 + 3*(40 + 3) , (kWidth - 40)/4 - 2, 40)];
+    [_cancelPushButton setTitle:@"暂停上传" forState:UIControlStateNormal];
+    [_cancelPushButton setTitleColor:textColor forState:UIControlStateNormal];
+    [_cancelPushButton setBackgroundColor:backColor];
+    [_cancelPushButton addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_cancelPushButton];
     
     // Button 继续上传
-    [self.continuePushButton setFrame:CGRectMake(20 + (kWidth - 40)/2 + 2 + (kWidth - 40)/4 + 2 ,50 + 3*(40 + 3) , (kWidth - 40)/4 - 2, 40)];
-    [self.continuePushButton setTitle:@"继续上传" forState:UIControlStateNormal];
-    [self.continuePushButton setTitleColor:textColor forState:UIControlStateNormal];
-    [self.continuePushButton setBackgroundColor:backColor];
+    _continuePushButton = [[UIButton alloc] initWithFrame:CGRectMake(20 + (kWidth - 40)/2 + 2 + (kWidth - 40)/4 + 2 ,50 + 3*(40 + 3) , (kWidth - 40)/4 - 2, 40)];
+    [_continuePushButton setTitle:@"继续上传" forState:UIControlStateNormal];
+    [_continuePushButton setTitleColor:textColor forState:UIControlStateNormal];
+    [_continuePushButton setBackgroundColor:backColor];
+    [_continuePushButton addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_continuePushButton];
     
     // Button 删除对象
-    [self.deleteObjButton setFrame:CGRectMake(20 ,50 + 4 * (40 + 3) , (kWidth - 40)/2 - 2, 40)];
-    [self.deleteObjButton setTitle:@"删除对象" forState:UIControlStateNormal];
-    [self.deleteObjButton setTitleColor:textColor forState:UIControlStateNormal];
-    [self.deleteObjButton setBackgroundColor:backColor];
+    _deleteObjButton = [[UIButton alloc] initWithFrame:CGRectMake(20 ,50 + 4 * (40 + 3) , (kWidth - 40)/2 - 2, 40)];
+    [_deleteObjButton setTitle:@"删除对象" forState:UIControlStateNormal];
+    [_deleteObjButton setTitleColor:textColor forState:UIControlStateNormal];
+    [_deleteObjButton setBackgroundColor:backColor];
+    [_deleteObjButton addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_deleteObjButton];
     
     // Button 查询对象权限
-    [self.queryObjButton setFrame:CGRectMake(20 + (kWidth - 40)/2 + 2 ,50 + 4 * (40 + 3) , (kWidth - 40)/2 - 2, 40)];
-    [self.queryObjButton setTitle:@"查询对象权限" forState:UIControlStateNormal];
-    [self.queryObjButton setTitleColor:textColor forState:UIControlStateNormal];
-    [self.queryObjButton setBackgroundColor:backColor];
+    _queryObjButton = [[UIButton alloc] initWithFrame:CGRectMake(20 + (kWidth - 40)/2 + 2 ,50 + 4 * (40 + 3) , (kWidth - 40)/2 - 2, 40)];
+    [_queryObjButton setTitle:@"查询对象权限" forState:UIControlStateNormal];
+    [_queryObjButton setTitleColor:textColor forState:UIControlStateNormal];
+    [_queryObjButton setBackgroundColor:backColor];
+    [_queryObjButton addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_queryObjButton];
     
     // Button 删除桶
-    [self.deleteBucketButton setFrame:CGRectMake(20 ,50 + 5 * (40 + 3) , (kWidth - 40)/2 - 2, 40)];
-    [self.deleteBucketButton setTitle:@"删除桶" forState:UIControlStateNormal];
-    [self.deleteBucketButton setTitleColor:textColor forState:UIControlStateNormal];
-    [self.deleteBucketButton setBackgroundColor:backColor];
+    _deleteBucketButton = [[UIButton alloc] initWithFrame:CGRectMake(20 ,50 + 5 * (40 + 3) , (kWidth - 40)/2 - 2, 40)];
+    [_deleteBucketButton setTitle:@"删除桶" forState:UIControlStateNormal];
+    [_deleteBucketButton setTitleColor:textColor forState:UIControlStateNormal];
+    [_deleteBucketButton setBackgroundColor:backColor];
+    [_deleteBucketButton addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_deleteBucketButton];
     
     // Button 修改桶权限
-    [self.updateBucketButton setFrame:CGRectMake(20 + (kWidth - 40)/2 + 2 ,50 + 5 * (40 + 3) , (kWidth - 40)/2 - 2, 40)];
-    [self.updateBucketButton setTitle:@"修改桶权限" forState:UIControlStateNormal];
-    [self.updateBucketButton setTitleColor:textColor forState:UIControlStateNormal];
-    [self.updateBucketButton setBackgroundColor:backColor];
+    _updateBucketButton = [[UIButton alloc] initWithFrame:CGRectMake(20 + (kWidth - 40)/2 + 2 ,50 + 5 * (40 + 3) , (kWidth - 40)/2 - 2, 40)];
+    [_updateBucketButton setTitle:@"修改桶权限" forState:UIControlStateNormal];
+    [_updateBucketButton setTitleColor:textColor forState:UIControlStateNormal];
+    [_updateBucketButton setBackgroundColor:backColor];
+    [_updateBucketButton addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_updateBucketButton];
     
     // Button 设置桶版本
-    [self.setBucketVersionButton setFrame:CGRectMake(20 ,50 + 6 * (40 + 3) , (kWidth - 40)/2 - 2, 40)];
-    [self.setBucketVersionButton setTitle:@"设置桶版本" forState:UIControlStateNormal];
-    [self.setBucketVersionButton setTitleColor:textColor forState:UIControlStateNormal];
-    [self.setBucketVersionButton setBackgroundColor:backColor];
+    _setBucketVersionButton = [[UIButton alloc] initWithFrame:CGRectMake(20 ,50 + 6 * (40 + 3) , (kWidth - 40)/2 - 2, 40)];
+    [_setBucketVersionButton setTitle:@"设置桶版本" forState:UIControlStateNormal];
+    [_setBucketVersionButton setTitleColor:textColor forState:UIControlStateNormal];
+    [_setBucketVersionButton setBackgroundColor:backColor];
+    [_setBucketVersionButton addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_setBucketVersionButton];
     
     // Button 查询所有对象权限
-    [self.queryAllObjButton setFrame:CGRectMake(20 + (kWidth - 40)/2 + 2 ,50 + 6 * (40 + 3) , (kWidth - 40)/2 - 2, 40)];
-    [self.queryAllObjButton setTitle:@"查询所有对象权限" forState:UIControlStateNormal];
-    [self.queryAllObjButton setTitleColor:textColor forState:UIControlStateNormal];
-    [self.queryAllObjButton setBackgroundColor:backColor];
+    _queryAllObjButton = [[UIButton alloc] initWithFrame:CGRectMake(20 + (kWidth - 40)/2 + 2 ,50 + 6 * (40 + 3) , (kWidth - 40)/2 - 2, 40)];
+    [_queryAllObjButton setTitle:@"查询所有对象权限" forState:UIControlStateNormal];
+    [_queryAllObjButton setTitleColor:textColor forState:UIControlStateNormal];
+    [_queryAllObjButton setBackgroundColor:backColor];
+    [_queryAllObjButton addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_queryAllObjButton];
     
     // Button 查询桶版本
-    [self.queryBucketVersionButton setFrame:CGRectMake(20 ,50 + 7 * (40 + 3) , (kWidth - 40)/2 - 2, 40)];
-    [self.queryBucketVersionButton setTitle:@"查询桶版本" forState:UIControlStateNormal];
-    [self.queryBucketVersionButton setTitleColor:textColor forState:UIControlStateNormal];
-    [self.queryBucketVersionButton setBackgroundColor:backColor];
+    _queryBucketVersionButton = [[UIButton alloc] initWithFrame:CGRectMake(20 ,50 + 7 * (40 + 3) , (kWidth - 40)/2 - 2, 40)];
+    [_queryBucketVersionButton setTitle:@"查询桶版本" forState:UIControlStateNormal];
+    [_queryBucketVersionButton setTitleColor:textColor forState:UIControlStateNormal];
+    [_queryBucketVersionButton setBackgroundColor:backColor];
+    [_queryBucketVersionButton addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_queryBucketVersionButton];
     
     // Button 查询所有对象版本
-    [self.queryAllObjVersionButton setFrame:CGRectMake(20 + (kWidth - 40)/2 + 2 ,50 + 7 * (40 + 3) , (kWidth - 40)/2 - 2, 40)];
-    [self.queryAllObjVersionButton setTitle:@"查询所有对象版本" forState:UIControlStateNormal];
-    [self.queryAllObjVersionButton setTitleColor:textColor forState:UIControlStateNormal];
-    [self.queryAllObjVersionButton setBackgroundColor:backColor];
+    _queryAllObjVersionButton = [[UIButton alloc] initWithFrame:CGRectMake(20 + (kWidth - 40)/2 + 2 ,50 + 7 * (40 + 3) , (kWidth - 40)/2 - 2, 40)];
+    [_queryAllObjVersionButton setTitle:@"查询所有对象版本" forState:UIControlStateNormal];
+    [_queryAllObjVersionButton setTitleColor:textColor forState:UIControlStateNormal];
+    [_queryAllObjVersionButton setBackgroundColor:backColor];
+    [_queryAllObjVersionButton addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_queryAllObjVersionButton];
     
     // Button 修改对象权限
-    [self.updateObjButton setFrame:CGRectMake(20 ,50 + 8 * (40 + 3) , (kWidth - 40)/2 - 2, 40)];
-    [self.updateObjButton setTitle:@"修改对象权限" forState:UIControlStateNormal];
-    [self.updateObjButton setTitleColor:textColor forState:UIControlStateNormal];
-    [self.updateObjButton setBackgroundColor:backColor];
+    _updateObjButton = [[UIButton alloc] initWithFrame:CGRectMake(20 ,50 + 8 * (40 + 3) , (kWidth - 40)/2 - 2, 40)];
+    [_updateObjButton setTitle:@"修改对象权限" forState:UIControlStateNormal];
+    [_updateObjButton setTitleColor:textColor forState:UIControlStateNormal];
+    [_updateObjButton setBackgroundColor:backColor];
+    [_updateObjButton addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_updateObjButton];
     
     // Button 删除指定版本的对象
-    [self.deleteObjForVersionButton setFrame:CGRectMake(20 + (kWidth - 40)/2 + 2 ,50 + 8 * (40 + 3) , (kWidth - 40)/2 - 2, 40)];
-    [self.deleteObjForVersionButton setTitle:@"删除指定版本的对象" forState:UIControlStateNormal];
-    [self.deleteObjForVersionButton setTitleColor:textColor forState:UIControlStateNormal];
-    [self.deleteObjForVersionButton setBackgroundColor:backColor];
+    _deleteObjForVersionButton = [[UIButton alloc] initWithFrame:CGRectMake(20 + (kWidth - 40)/2 + 2 ,50 + 8 * (40 + 3) , (kWidth - 40)/2 - 2, 40)];
+    [_deleteObjForVersionButton setTitle:@"删除指定版本的对象" forState:UIControlStateNormal];
+    [_deleteObjForVersionButton setTitleColor:textColor forState:UIControlStateNormal];
+    [_deleteObjForVersionButton setBackgroundColor:backColor];
+    [_deleteObjForVersionButton addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_deleteObjForVersionButton];
     
     // Button 下载对象
-    [self.downloadObjButton setFrame:CGRectMake(20, 50 + 9 * (40 + 3) , (kWidth - 40)/2 - 2, 40)];
-    [self.downloadObjButton setTitle:@"下载对象" forState:UIControlStateNormal];
-    [self.downloadObjButton setTitleColor:textColor forState:UIControlStateNormal];
-    [self.downloadObjButton setBackgroundColor:backColor];
+    _downloadObjButton = [[UIButton alloc] initWithFrame:CGRectMake(20, 50 + 9 * (40 + 3) , (kWidth - 40)/2 - 2, 40)];
+    [_downloadObjButton setTitle:@"下载对象" forState:UIControlStateNormal];
+    [_downloadObjButton setTitleColor:textColor forState:UIControlStateNormal];
+    [_downloadObjButton setBackgroundColor:backColor];
+    [_downloadObjButton addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_downloadObjButton];
     
     // Button 暂停下载
-    [self.cancelDownloadObjButton setFrame:CGRectMake(20 + (kWidth - 40)/2 + 2 , 50 + 9 * (40 + 3) , (kWidth - 40)/4 - 2, 40)];
-    [self.cancelDownloadObjButton setTitle:@"暂停下载" forState:UIControlStateNormal];
-    [self.cancelDownloadObjButton setTitleColor:textColor forState:UIControlStateNormal];
-    [self.cancelDownloadObjButton setBackgroundColor:backColor];
+    _cancelDownloadObjButton = [[UIButton alloc] initWithFrame:CGRectMake(20 + (kWidth - 40)/2 + 2 , 50 + 9 * (40 + 3) , (kWidth - 40)/4 - 2, 40)];
+    [_cancelDownloadObjButton setTitle:@"暂停下载" forState:UIControlStateNormal];
+    [_cancelDownloadObjButton setTitleColor:textColor forState:UIControlStateNormal];
+    [_cancelDownloadObjButton setBackgroundColor:backColor];
+    [_cancelDownloadObjButton addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_cancelDownloadObjButton];
     
     // Button 继续下载
-    [self.continueDownloadObjButton setFrame:CGRectMake(20 + (kWidth - 40)/2 + 2 + (kWidth - 40)/4 + 2 , 50 + 9 * (40 + 3) , (kWidth - 40)/4 - 2, 40)];
-    [self.continueDownloadObjButton setTitle:@"继续下载" forState:UIControlStateNormal];
-    [self.continueDownloadObjButton setTitleColor:textColor forState:UIControlStateNormal];
-    [self.continueDownloadObjButton setBackgroundColor:backColor];
+    _continueDownloadObjButton = [[UIButton alloc] initWithFrame:CGRectMake(20 + (kWidth - 40)/2 + 2 + (kWidth - 40)/4 + 2 , 50 + 9 * (40 + 3) , (kWidth - 40)/4 - 2, 40)];
+    [_continueDownloadObjButton setTitle:@"继续下载" forState:UIControlStateNormal];
+    [_continueDownloadObjButton setTitleColor:textColor forState:UIControlStateNormal];
+    [_continueDownloadObjButton setBackgroundColor:backColor];
+    [_continueDownloadObjButton addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_continueDownloadObjButton];
     
     // Button 获取外链
-    [self.getUrlButton setFrame:CGRectMake(20, 50 + 10 * (40 + 3) , 80, 40)];
-    [self.getUrlButton setTitle:@"获取外链" forState:UIControlStateNormal];
-    [self.getUrlButton setTitleColor:textColor forState:UIControlStateNormal];
-    [self.getUrlButton setBackgroundColor:backColor];
+    _getUrlButton = [[UIButton alloc] initWithFrame:CGRectMake(20, 50 + 10 * (40 + 3) , 80, 40)];
+    [_getUrlButton setTitle:@"获取外链" forState:UIControlStateNormal];
+    [_getUrlButton setTitleColor:textColor forState:UIControlStateNormal];
+    [_getUrlButton setBackgroundColor:backColor];
+    [_getUrlButton addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_getUrlButton];
     
     // UILabel 外链显示
-    [self.urlShow setFrame:CGRectMake(120,50 + 10 * (40 + 3) , kWidth - 100, 40)];
-    [self.urlShow  setText:@"URL:"];
-    [self.urlShow  setTextAlignment:NSTextAlignmentLeft];
-    [self.urlShow  setTextColor:textColor];
-    [self.urlShow  setBackgroundColor:[UIColor yellowColor]];
+    _urlShow = [[UILabel alloc] initWithFrame:CGRectMake(120,50 + 10 * (40 + 3) , kWidth - 100, 40)];
+    [_urlShow  setText:@"URL:"];
+    [_urlShow  setTextAlignment:NSTextAlignmentLeft];
+    [_urlShow  setTextColor:textColor];
+    [_urlShow  setBackgroundColor:[UIColor yellowColor]];
+    [self.view addSubview:_urlShow];
     
     // UILabel 进度显示
-    [self.progressShow setFrame:CGRectMake(20,50 + 11 * (40 + 3) , kWidth - 40, 40)];
-    [self.progressShow  setText:@"进度:"];
-    [self.progressShow  setTextAlignment:NSTextAlignmentLeft];
-    [self.progressShow  setTextColor:textColor];
-    [self.progressShow  setBackgroundColor:[UIColor yellowColor]];
-//    [self.view addSubview:self.progressShow];
+    _progressShow = [[UILabel alloc] initWithFrame:CGRectMake(20,50 + 11 * (40 + 3) , kWidth - 40, 40)];
+    [_progressShow  setText:@"进度:"];
+    [_progressShow  setTextAlignment:NSTextAlignmentLeft];
+    [_progressShow  setTextColor:textColor];
+    [_progressShow  setBackgroundColor:[UIColor yellowColor]];
+    [self.view addSubview:_progressShow];
 }
 
-- (IBAction)buttonAction:(UIButton *)sender {
+- (void)buttonAction:(UIButton *)sender {
     __weak typeof(self) weakSelf = self;
     if (YES == [sender isEqual:_pushButton]){
         NSLog(@"Click pushButton");
         _bPauseStatus = NO;
         _progressShow.text = @"进度:";
         _objShow.text = @"对象名:";
-        [self gotoImageLibrary];
+//        [self gotoImageLibrary];        // 使用 UIImagePickerController 获取相册图片
+        AlbumsVC *vc = [[AlbumsVC alloc] init];
+        vc.uploadView = self.view;
+        self.navigationController.navigationBar.hidden = NO;
+        [self.navigationController pushViewController:vc animated:YES];      // 使用 PHImageManager 获取相册图片
+    } else if (YES == [sender isEqual:_takePhotoPushButton]){
+        NSLog(@"takePhoto button");
+        UIImagePickerController *pick = [[UIImagePickerController alloc]init];
+        pick.sourceType=UIImagePickerControllerCameraCaptureModeVideo;
+        //        pick.sourceType = UIImagePickerControllerSourceTypeCamera;
+        pick.delegate = self;
+        [self presentViewController:pick animated:YES completion:^{
+            
+        }];
     } else if (YES == [sender isEqual:_cancelPushButton]){
         NSLog(@"Click Cancel pushButton");
         //暂停上传
@@ -319,11 +379,9 @@
         [_upManager createBucket:newBucket complete:^(spResponseInfo *info, NSString *key, NSDictionary *resp) {
             NSLog(@"桶内对象:%@",key);
             NSLog(@"resCode:%d,reqId:%@,error.des:%@", info.statusCode,info.reqId, info.error.description);
-            for (NSString *key in resp) {
-                NSLog(@"key:%@--value:%@", key,resp[key]);
-            }
             [weakSelf showErrorText:[NSString stringWithFormat:@"创建桶 返回码=%d 错误=%@",info.statusCode,info.error.description]];
-            weakSelf.detailInfo = [[NSString alloc] initWithFormat:@"resCode:%d,\n reqId:%@,\n error.des:%@", info.statusCode,info.reqId, info.error.description];
+            weakSelf.detailInfo = [[NSString alloc] initWithFormat:@"resCode:%d,\n reqId:%@,\n error.des:%@ \n info:%@", info.statusCode,info.reqId, info.error.description,[self convertToJsonData:resp]];
+            
         }];
     } else if(YES == [sender isEqual:_queryBucketButton]){
         // 查询桶
@@ -336,11 +394,8 @@
         [_upManager queryBucketAcl:queryBucket complete:^(spResponseInfo *info, NSString *key, NSDictionary *resp) {
             NSLog(@"桶内对象:%@",key);
             NSLog(@"resCode:%d,reqId:%@,error.des:%@", info.statusCode,info.reqId, info.error.description);
-            for (NSString *key in resp) {
-                NSLog(@"key:%@--value:%@", key,resp[key]);
-            }
             [weakSelf showErrorText:[NSString stringWithFormat:@"查询桶 返回码=%d 错误=%@",info.statusCode,info.error.description]];
-            weakSelf.detailInfo = [[NSString alloc] initWithFormat:@"resCode:%d,\n reqId:%@,\n error.des:%@", info.statusCode,info.reqId, info.error.description];
+            weakSelf.detailInfo = [[NSString alloc] initWithFormat:@"resCode:%d,\n reqId:%@,\n error.des:%@ \n info:%@", info.statusCode,info.reqId, info.error.description,[self convertToJsonData:resp]];
         }];
     } else if(YES == [sender isEqual:_deleteBucketButton]){
         // 删除桶
@@ -353,11 +408,8 @@
         [_upManager deleteBucket:deleteBucket complete:^(spResponseInfo *info, NSString *key, NSDictionary *resp) {
             NSLog(@"桶内对象:%@",key);
             NSLog(@"resCode:%d,reqId:%@,error.des:%@", info.statusCode,info.reqId, info.error.description);
-            for (NSString *key in resp) {
-                NSLog(@"key:%@--value:%@", key,resp[key]);
-            }
             [weakSelf showErrorText:[NSString stringWithFormat:@"删除桶 返回码=%d 错误=%@",info.statusCode,info.error.description]];
-            weakSelf.detailInfo = [[NSString alloc] initWithFormat:@"resCode:%d,\n reqId:%@,\n error.des:%@", info.statusCode,info.reqId, info.error.description];
+            weakSelf.detailInfo = [[NSString alloc] initWithFormat:@"resCode:%d,\n reqId:%@,\n error.des:%@ \n info:%@", info.statusCode,info.reqId, info.error.description,[self convertToJsonData:resp]];
         }];
     } else if(YES == [sender isEqual:_updateBucketButton]){
         // 修改桶权限
@@ -373,11 +425,8 @@
         [_upManager updateBucketAcl:updateBucket complete:^(spResponseInfo *info, NSString *key, NSDictionary *resp) {
             NSLog(@"桶内对象:%@",key);
             NSLog(@"resCode:%d,reqId:%@,error.des:%@", info.statusCode,info.reqId, info.error.description);
-            for (NSString *key in resp) {
-                NSLog(@"key:%@--value:%@", key,resp[key]);
-            }
-             [weakSelf showErrorText:[NSString stringWithFormat:@"修改桶权限 返回码=%d 错误=%@",info.statusCode,info.error.description]];
-            weakSelf.detailInfo = [[NSString alloc] initWithFormat:@"resCode:%d,\n reqId:%@,\n error.des:%@", info.statusCode,info.reqId, info.error.description];
+            [weakSelf showErrorText:[NSString stringWithFormat:@"修改桶权限 返回码=%d 错误=%@",info.statusCode,info.error.description]];
+            weakSelf.detailInfo = [[NSString alloc] initWithFormat:@"resCode:%d,\n reqId:%@,\n error.des:%@ \n info:%@", info.statusCode,info.reqId, info.error.description,[self convertToJsonData:resp]];
         } option:opt];
     } else if(YES == [sender isEqual:_setBucketVersionButton]){
         // 设置桶版本控制
@@ -391,11 +440,8 @@
         [_upManager setBucketVersion:versionBucket version:strSpBucketVersionEnabled complete:^(spResponseInfo *info, NSString *key, NSDictionary *resp) {
             NSLog(@"桶内对象:%@",key);
             NSLog(@"resCode:%d,reqId:%@,error.des:%@", info.statusCode,info.reqId, info.error.description);
-            for (NSString *key in resp) {
-                NSLog(@"key:%@--value:%@", key,resp[key]);
-            }
-             [weakSelf showErrorText:[NSString stringWithFormat:@"设置桶版本控制 返回码=%d 错误=%@",info.statusCode,info.error.description]];
-            weakSelf.detailInfo = [[NSString alloc] initWithFormat:@"resCode:%d,\n reqId:%@,\n error.des:%@", info.statusCode,info.reqId, info.error.description];
+            [weakSelf showErrorText:[NSString stringWithFormat:@"设置桶版本控制 返回码=%d 错误=%@",info.statusCode,info.error.description]];
+            weakSelf.detailInfo = [[NSString alloc] initWithFormat:@"resCode:%d,\n reqId:%@,\n error.des:%@ \n info:%@", info.statusCode,info.reqId, info.error.description,[self convertToJsonData:resp]];
         }];
     } else if(YES == [sender isEqual:_deleteObjButton]){
         // 删除桶内对象
@@ -410,11 +456,8 @@
         [_upManager deleteObj:Bucket obj:obj complete:^(spResponseInfo *info, NSString *key, NSDictionary *resp) {
             NSLog(@"桶内对象:%@",key);
             NSLog(@"resCode:%d,reqId:%@,error.des:%@", info.statusCode,info.reqId, info.error.description);
-            for (NSString *key in resp) {
-                NSLog(@"key:%@--value:%@", key,resp[key]);
-            }
             [weakSelf showErrorText:[NSString stringWithFormat:@"删除桶内对象 返回码=%d 错误=%@",info.statusCode,info.error.description]];
-            weakSelf.detailInfo = [[NSString alloc] initWithFormat:@"resCode:%d,\n reqId:%@,\n error.des:%@", info.statusCode,info.reqId, info.error.description];
+            weakSelf.detailInfo = [[NSString alloc] initWithFormat:@"resCode:%d,\n reqId:%@,\n error.des:%@ \n info:%@", info.statusCode,info.reqId, info.error.description,[self convertToJsonData:resp]];
         }];
     } else if(YES == [sender isEqual:_deleteObjForVersionButton]){
         // 删除桶内指定版本的对象
@@ -431,11 +474,8 @@
         [_upManager deleteObjForVersion:Bucket obj:obj versionId:versionId complete:^(spResponseInfo *info, NSString *key, NSDictionary *resp) {
             NSLog(@"桶内对象:%@",key);
             NSLog(@"resCode:%d,reqId:%@,error.des:%@", info.statusCode,info.reqId, info.error.description);
-            for (NSString *key in resp) {
-                NSLog(@"key:%@--value:%@", key,resp[key]);
-            }
             [weakSelf showErrorText:[NSString stringWithFormat:@"删除桶内指定版本的对象 返回码=%d 错误=%@",info.statusCode,info.error.description]];
-            weakSelf.detailInfo = [[NSString alloc] initWithFormat:@"resCode:%d,\n reqId:%@,\n error.des:%@", info.statusCode,info.reqId, info.error.description];
+            weakSelf.detailInfo = [[NSString alloc] initWithFormat:@"resCode:%d,\n reqId:%@,\n error.des:%@ \n info:%@", info.statusCode,info.reqId, info.error.description,[self convertToJsonData:resp]];
         }];
     } else if(YES == [sender isEqual:_updateObjButton]){
         // 修改对象权限
@@ -454,11 +494,8 @@
         [_upManager updateObj:Bucket obj:obj complete:^(spResponseInfo *info, NSString *key, NSDictionary *resp) {
             NSLog(@"桶内对象:%@",key);
             NSLog(@"resCode:%d,reqId:%@,error.des:%@", info.statusCode,info.reqId, info.error.description);
-            for (NSString *key in resp) {
-                NSLog(@"key:%@--value:%@", key,resp[key]);
-            }
             [weakSelf showErrorText:[NSString stringWithFormat:@"修改对象权限 返回码=%d 错误=%@",info.statusCode,info.error.description]];
-            weakSelf.detailInfo = [[NSString alloc] initWithFormat:@"resCode:%d,\n reqId:%@,\n error.des:%@", info.statusCode,info.reqId, info.error.description];
+            weakSelf.detailInfo = [[NSString alloc] initWithFormat:@"resCode:%d,\n reqId:%@,\n error.des:%@ \n info:%@", info.statusCode,info.reqId, info.error.description,[self convertToJsonData:resp]];
         } option:opt];
     } else if(YES == [sender isEqual:_queryObjButton]){
         // 查询对象权限
@@ -474,11 +511,8 @@
         [_upManager queryObj:Bucket obj:obj complete:^(spResponseInfo *info, NSString *key, NSDictionary *resp) {
             NSLog(@"桶内对象:%@",key);
             NSLog(@"resCode:%d,reqId:%@,error.des:%@", info.statusCode,info.reqId, info.error.description);
-            for (NSString *key in resp) {
-                NSLog(@"key:%@--value:%@", key,resp[key]);
-            }
-             [weakSelf showErrorText:[NSString stringWithFormat:@"查询对象权限 返回码=%d 错误=%@",info.statusCode,info.error.description]];
-            weakSelf.detailInfo = [[NSString alloc] initWithFormat:@"resCode:%d,\n reqId:%@,\n error.des:%@", info.statusCode,info.reqId, info.error.description];
+            [weakSelf showErrorText:[NSString stringWithFormat:@"查询对象权限 返回码=%d 错误=%@",info.statusCode,info.error.description]];
+            weakSelf.detailInfo = [[NSString alloc] initWithFormat:@"resCode:%d,\n reqId:%@,\n error.des:%@ \n info:%@", info.statusCode,info.reqId, info.error.description,[self convertToJsonData:resp]];
         }];
     } else if(YES == [sender isEqual:_queryAllObjButton]){
         // 查询所有对象
@@ -493,11 +527,8 @@
         [_upManager queryAllObj:Bucket complete:^(spResponseInfo *info, NSString *key, NSDictionary *resp) {
             NSLog(@"桶内对象:%@",key);
             NSLog(@"resCode:%d,reqId:%@,error.des:%@", info.statusCode,info.reqId, info.error.description);
-            for (NSString *key in resp) {
-                NSLog(@"key:%@--value:%@", key,resp[key]);
-            }
             [weakSelf showErrorText:[NSString stringWithFormat:@"查询所有对象 返回码=%d 错误=%@",info.statusCode,info.error.description]];
-            weakSelf.detailInfo = [[NSString alloc] initWithFormat:@"resCode:%d,\n reqId:%@,\n error.des:%@", info.statusCode,info.reqId, info.error.description];
+            weakSelf.detailInfo = [[NSString alloc] initWithFormat:@"resCode:%d,\n reqId:%@,\n error.des:%@ \n info:%@", info.statusCode,info.reqId, info.error.description,[self convertToJsonData:resp]];
         }];
     } else if(YES == [sender isEqual:_queryBucketVersionButton]){
         // 查询桶版本信息
@@ -512,11 +543,8 @@
         [_upManager queryBucketVersion:Bucket complete:^(spResponseInfo *info, NSString *key, NSDictionary *resp) {
             NSLog(@"桶内对象:%@",key);
             NSLog(@"resCode:%d,reqId:%@,error.des:%@", info.statusCode,info.reqId, info.error.description);
-            for (NSString *key in resp) {
-                NSLog(@"key:%@--value:%@", key,resp[key]);
-            }
             [weakSelf showErrorText:[NSString stringWithFormat:@"查询桶版本信息 返回码=%d 错误=%@",info.statusCode,info.error.description]];
-            weakSelf.detailInfo = [[NSString alloc] initWithFormat:@"resCode:%d,\n reqId:%@,\n error.des:%@", info.statusCode,info.reqId, info.error.description];
+            weakSelf.detailInfo = [[NSString alloc] initWithFormat:@"resCode:%d,\n reqId:%@,\n error.des:%@ \n info:%@", info.statusCode,info.reqId, info.error.description,[self convertToJsonData:resp]];
         }];
     } else if(YES == [sender isEqual:_queryAllObjVersionButton]){
         // 查询桶内所有对象版本信息
@@ -531,11 +559,8 @@
         [_upManager queryAllObjVersion:Bucket complete:^(spResponseInfo *info, NSString *key, NSDictionary *resp) {
             NSLog(@"桶内对象:%@",key);
             NSLog(@"resCode:%d,reqId:%@,error.des:%@", info.statusCode,info.reqId, info.error.description);
-            for (NSString *key in resp) {
-                NSLog(@"key:%@--value:%@", key,resp[key]);
-            }
-             [weakSelf showErrorText:[NSString stringWithFormat:@"查询桶内所有对象版本信息 返回码=%d 错误=%@",info.statusCode,info.error.description]];
-            weakSelf.detailInfo = [[NSString alloc] initWithFormat:@"resCode:%d,\n reqId:%@,\n error.des:%@", info.statusCode,info.reqId, info.error.description];
+            [weakSelf showErrorText:[NSString stringWithFormat:@"查询桶内所有对象版本信息 返回码=%d 错误=%@",info.statusCode,info.error.description]];
+            weakSelf.detailInfo = [[NSString alloc] initWithFormat:@"resCode:%d,\n reqId:%@,\n error.des:%@ \n info:%@", info.statusCode,info.reqId, info.error.description,[self convertToJsonData:resp]];
         }];
     } else if(YES == [sender isEqual:_downloadObjButton]){
         // 下载桶内对象
@@ -634,71 +659,27 @@
     
     NSLog(@"%@", info);
     
-    NSString *urlValue = [info valueForKey:UIImagePickerControllerReferenceURL];
-    [self videoWithUrl:urlValue withFileName:self.appfileName];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
     
-     _uploadFilePath = [NSString stringWithFormat:@"%@/%@",KVideoUrlPath,self.appfileName];
-    
-    [picker dismissModalViewControllerAnimated:YES];
-    
-}
-
-// 将原始视频的URL转化为NSData数据,写入沙盒
-- (void)videoWithUrl:(NSURL *)url withFileName:(NSString *)fileName
-{
-    // 解析一下,为什么视频不像图片一样一次性开辟本身大小的内存写入?
-    // 想想,如果1个视频有1G多,难道直接开辟1G多的空间大小来写?
-    // 创建存放原始图的文件夹--->VideoURL
-    NSFileManager * fileManager = [NSFileManager defaultManager];
     if (![fileManager fileExistsAtPath:KVideoUrlPath]) {
         [fileManager createDirectoryAtPath:KVideoUrlPath withIntermediateDirectories:YES attributes:nil error:nil];
     }
     
-    NSString * videoPath = [KVideoUrlPath stringByAppendingPathComponent:fileName];
-    BOOL res= [fileManager removeItemAtPath:videoPath error:nil];
+    _uploadFilePath = [NSString stringWithFormat:@"%@/%@",KVideoUrlPath,self.appfileName];
+    BOOL res= [fileManager removeItemAtPath:_uploadFilePath error:nil];
     if (res) {
         NSLog(@"文件删除成功");
     }else
         NSLog(@"文件删除失败");
-    NSLog(@"文件是否存在: %@",[fileManager isExecutableFileAtPath:videoPath]?@"YES":@"NO");
+    NSLog(@"文件是否存在: %@",[fileManager isExecutableFileAtPath:_uploadFilePath]?@"YES":@"NO");
     
+    UIImage *originImage = [info objectForKey:UIImagePickerControllerOriginalImage];
+    //    originImage=[self imageWithImage:originImage scaledToSize:CGSizeMake( 1632,1224)];
+
+    [UIImageJPEGRepresentation(originImage, 1.0)writeToFile: _uploadFilePath atomically:YES];
     
-    ALAssetsLibrary *assetLibrary = [[ALAssetsLibrary alloc] init];
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        if (url) {
-            [assetLibrary assetForURL:url resultBlock:^(ALAsset *asset) {
-                ALAssetRepresentation *rep = [asset defaultRepresentation];
-                NSString * videoPath = [KVideoUrlPath stringByAppendingPathComponent:fileName];
-                const char *cvideoPath = [videoPath UTF8String];
-                FILE *file = fopen(cvideoPath, "a+");
-                if (file) {
-                    const int bufferSize = 10 * 1024 * 1024;
-                    // 初始化一个10M的buffer
-                    Byte *buffer = (Byte*)malloc(bufferSize);
-                    NSUInteger read = 0, offset = 0, written = 0;
-                    NSError* err = nil;
-                    if (rep.size != 0)
-                    {
-                        do {
-                            read = [rep getBytes:buffer fromOffset:offset length:bufferSize error:&err];
-                            written = fwrite(buffer, sizeof(char), read, file);
-                            offset += read;
-                        } while (read != 0 && !err);//没到结尾，没出错，ok继续
-                    }
-                    // 释放缓冲区，关闭文件
-                    free(buffer);
-                    buffer = NULL;
-                    fclose(file);
-                    file = NULL;
-                    
-                    // UI的更新记得放在主线程,要不然等子线程排队过来都不知道什么年代了,会很慢的
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [self prePush];
-                    });
-                }
-            } failureBlock:nil];
-        }
-    });
+    [picker dismissModalViewControllerAnimated:YES];
+    
 }
 
 //获取当前时间戳  （以毫秒为单位）
@@ -742,6 +723,7 @@
     [self.errorShow setTextAlignment:NSTextAlignmentLeft];
     [self.errorShow setTextColor:[UIColor colorWithRed:0.1f green:0.1f blue:0.9f alpha:1.0f]];
     [self.errorShow setBackgroundColor:[UIColor yellowColor]];
+    self.uploadFilePath = @"";
 //    [self.view addSubview:errorShow];
 }
 
@@ -763,6 +745,7 @@
 
 -(void)showDetailInfoClick{
     UIViewController *vc = [UIViewController new];
+    
     vc.view.backgroundColor = [UIColor cyanColor];
     
     vc.view.frame = CGRectMake(0, 0, kWidth * 0.8, kHeight * 0.8);
@@ -784,6 +767,25 @@
     [vc.view addSubview:lable];
     
     [self cb_presentPopupViewController:vc animationType:CBPopupViewAnimationFade aligment:CBPopupViewAligmentCenter dismissed:nil];
+}
+
+-(NSString *)convertToJsonData:(NSDictionary *)dict{
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:&error];
+    NSString *jsonString;
+    if (!jsonData) {
+        NSLog(@"%@",error);
+    }else{
+        jsonString = [[NSString alloc]initWithData:jsonData encoding:NSUTF8StringEncoding];
+    }
+    NSMutableString *mutStr = [NSMutableString stringWithString:jsonString];
+    NSRange range = {0,jsonString.length};
+    //去掉字符串中的空格
+    [mutStr replaceOccurrencesOfString:@" " withString:@"" options:NSLiteralSearch range:range];
+    NSRange range2 = {0,mutStr.length};
+    //去掉字符串中的换行符
+    [mutStr replaceOccurrencesOfString:@"\n" withString:@"" options:NSLiteralSearch range:range2];
+    return mutStr;
 }
 
 - (IBAction)endEditing:(id)sender{

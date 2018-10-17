@@ -1,0 +1,93 @@
+
+/* Class = "UIButton"; normalTitle = "继续下载"; ObjectID = "0BN-60-IsV"; */
+"0BN-60-IsV.normalTitle" = "继续下载";
+
+/* Class = "UIButton"; normalTitle = "查询桶版本"; ObjectID = "10n-BN-Jeb"; */
+"10n-BN-Jeb.normalTitle" = "查询桶版本";
+
+/* Class = "UILabel"; text = "对象名:"; ObjectID = "25n-Nz-4QQ"; */
+"25n-Nz-4QQ.text" = "对象名:";
+
+/* Class = "UILabel"; text = "桶名："; ObjectID = "7TY-YL-DwJ"; */
+"7TY-YL-DwJ.text" = "桶名：";
+
+/* Class = "UIButton"; normalTitle = "查询所有对象"; ObjectID = "96v-1P-8Qh"; */
+"96v-1P-8Qh.normalTitle" = "查询所有对象";
+
+/* Class = "UIButton"; normalTitle = "取消下载"; ObjectID = "Af2-x6-msU"; */
+"Af2-x6-msU.normalTitle" = "取消下载";
+
+/* Class = "UIButton"; normalTitle = "取消上传"; ObjectID = "BY8-ex-6cy"; */
+"BY8-ex-6cy.normalTitle" = "取消上传";
+
+/* Class = "UIButton"; normalTitle = "修改版本对象"; ObjectID = "CmF-ba-BXt"; */
+"CmF-ba-BXt.normalTitle" = "修改版本对象";
+
+/* Class = "UITextField"; placeholder = "创建桶内对象时必须填写"; ObjectID = "Ge9-MO-Wha"; */
+"Ge9-MO-Wha.placeholder" = "创建桶内对象时必须填写";
+
+/* Class = "UIButton"; normalTitle = "查询桶"; ObjectID = "HJp-5s-FRf"; */
+"HJp-5s-FRf.normalTitle" = "查询桶";
+
+/* Class = "UILabel"; text = "错误:"; ObjectID = "LpV-OE-YT2"; */
+"LpV-OE-YT2.text" = "错误:";
+
+/* Class = "UILabel"; text = "对象名："; ObjectID = "MJO-He-ePe"; */
+"MJO-He-ePe.text" = "对象名：";
+
+/* Class = "UIButton"; normalTitle = "删除指定对象"; ObjectID = "Px7-4M-mZy"; */
+"Px7-4M-mZy.normalTitle" = "删除指定对象";
+
+/* Class = "UIButton"; normalTitle = "查询对象权限"; ObjectID = "TEA-mF-iCV"; */
+"TEA-mF-iCV.normalTitle" = "查询对象权限";
+
+/* Class = "UIButton"; normalTitle = "继续上传"; ObjectID = "UpW-mv-gZg"; */
+"UpW-mv-gZg.normalTitle" = "继续上传";
+
+/* Class = "UIButton"; normalTitle = "创建桶"; ObjectID = "Vq9-vi-cU1"; */
+"Vq9-vi-cU1.normalTitle" = "创建桶";
+
+/* Class = "UIButton"; normalTitle = "浏览相册"; ObjectID = "WZW-ss-xF0"; */
+"WZW-ss-xF0.normalTitle" = "浏览相册";
+
+/* Class = "UIButton"; normalTitle = "获取外链"; ObjectID = "Xu8-jn-asW"; */
+"Xu8-jn-asW.normalTitle" = "获取外链";
+
+/* Class = "UIButton"; normalTitle = "删除桶内对象"; ObjectID = "XwP-Xx-7yY"; */
+"XwP-Xx-7yY.normalTitle" = "删除桶内对象";
+
+/* Class = "UITextField"; placeholder = "创建桶时必须填写"; ObjectID = "YCM-8o-Roa"; */
+"YCM-8o-Roa.placeholder" = "创建桶时必须填写";
+
+/* Class = "UIButton"; normalTitle = "查桶对象版本"; ObjectID = "ang-dP-Wvn"; */
+"ang-dP-Wvn.normalTitle" = "查桶对象版本";
+
+/* Class = "UIButton"; normalTitle = "修改桶权限"; ObjectID = "ass-bg-n2b"; */
+"ass-bg-n2b.normalTitle" = "修改桶权限";
+
+/* Class = "UIButton"; normalTitle = "修改对象权限"; ObjectID = "e9J-IM-m6P"; */
+"e9J-IM-m6P.normalTitle" = "修改对象权限";
+
+/* Class = "UITextField"; placeholder = "FilePath"; ObjectID = "jDR-kE-SMC"; */
+"jDR-kE-SMC.placeholder" = "FilePath";
+
+/* Class = "UIButton"; normalTitle = "拍摄上传"; ObjectID = "nfD-8j-C0i"; */
+"nfD-8j-C0i.normalTitle" = "拍摄上传";
+
+/* Class = "UIButton"; normalTitle = "下载桶内对象"; ObjectID = "oZI-a9-Ju6"; */
+"oZI-a9-Ju6.normalTitle" = "下载桶内对象";
+
+/* Class = "UIButton"; normalTitle = "删除桶"; ObjectID = "sM0-px-WFy"; */
+"sM0-px-WFy.normalTitle" = "删除桶";
+
+/* Class = "UILabel"; text = "进度:"; ObjectID = "se4-v1-Qxf"; */
+"se4-v1-Qxf.text" = "进度:";
+
+/* Class = "UIButton"; normalTitle = "上传文件"; ObjectID = "tPp-YO-2vY"; */
+"tPp-YO-2vY.normalTitle" = "上传文件";
+
+/* Class = "UILabel"; text = "URL"; ObjectID = "wSf-Sz-5Cl"; */
+"wSf-Sz-5Cl.text" = "URL";
+
+/* Class = "UIButton"; normalTitle = "设置桶版本"; ObjectID = "zxe-vy-wbt"; */
+"zxe-vy-wbt.normalTitle" = "设置桶版本";
