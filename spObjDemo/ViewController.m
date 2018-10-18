@@ -348,7 +348,6 @@
         _objShow.text = @"对象名:";
 //        [self gotoImageLibrary];        // 使用 UIImagePickerController 获取相册图片
         AlbumsVC *vc = [[AlbumsVC alloc] init];
-        vc.uploadView = self.view;
         self.navigationController.navigationBar.hidden = NO;
         [self.navigationController pushViewController:vc animated:YES];      // 使用 PHImageManager 获取相册图片
     } else if (YES == [sender isEqual:_takePhotoPushButton]){

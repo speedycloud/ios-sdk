@@ -62,7 +62,6 @@
     PhotoCell *cell = (PhotoCell *)[collectionView cellForItemAtIndexPath:indexPath];
     ShowVC *vc = [[ShowVC alloc] init];
     vc.asset = cell.asset;
-    vc.showUploadView = self.photoUploadView;
     [self.navigationController pushViewController:vc animated:YES];
 }
 

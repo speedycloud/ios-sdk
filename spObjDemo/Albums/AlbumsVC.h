@@ -10,5 +10,5 @@
 
 
 @interface AlbumsVC : UIViewController
-@property (nonatomic,strong) UIViewController *uploadView;
+
 @end

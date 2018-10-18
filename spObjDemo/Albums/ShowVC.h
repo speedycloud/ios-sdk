@@ -10,5 +10,4 @@
 @class PHAsset;
 @interface ShowVC : UIViewController
 @property (nonatomic,strong) PHAsset *asset;
-@property (nonatomic,strong) UIViewController *showUploadView;
 @end

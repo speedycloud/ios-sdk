@@ -62,7 +62,6 @@
     }
     PhotosVC *vc = [[PhotosVC alloc] init];
     vc.collection = collection;
-    vc.photoUploadView = self.uploadView;
     [self.navigationController pushViewController:vc animated:YES];
 }
 

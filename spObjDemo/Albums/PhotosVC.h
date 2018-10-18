@@ -10,5 +10,4 @@
 @class PHAssetCollection;
 @interface PhotosVC : UIViewController
 @property (nonatomic,strong) PHAssetCollection *collection;
-@property (nonatomic,strong) UIViewController *photoUploadView;
 @end
